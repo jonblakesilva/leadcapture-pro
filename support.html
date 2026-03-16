@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — LeadCapture Pro</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1e293b;
+      background: #f8fafc;
+      padding: 40px 20px;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 40px 48px;
+    }
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .meta {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 28px 0 8px;
+    }
+    p { margin-bottom: 12px; color: #334155; }
+    ul {
+      margin: 8px 0 12px 20px;
+      color: #334155;
+    }
+    li { margin-bottom: 5px; }
+    .highlight {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: #166534;
+    }
+    .faq-list { margin-top: 8px; }
+    details {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+    summary {
+      font-weight: 600;
+      font-size: 13px;
+      color: #0f172a;
+      padding: 12px 16px;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 16px;
+      color: #94a3b8;
+      transition: transform 0.15s;
+    }
+    details[open] summary::after { content: '−'; }
+    .faq-body {
+      padding: 0 16px 14px;
+      font-size: 13px;
+      color: #475569;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 12px;
+    }
+    .faq-body code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 12px;
+      color: #0f172a;
+    }
+    .contact-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #475569;
+    }
+    .contact-box strong { color: #0f172a; display: block; margin-bottom: 6px; font-size: 14px; }
+    .contact-box a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    .contact-box a:hover { text-decoration: underline; }
+    footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+    }
+    footer a { color: #94a3b8; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="badge">Support</div>
+    <h1>Support</h1>
+    <p class="meta">LeadCapture Pro Chrome Extension &nbsp;·&nbsp; Version 1.7.6</p>
+
+    <h2>Getting Started</h2>
+    <p>LeadCapture Pro detects business contact information on any web page and lets you push it directly to your GoHighLevel CRM. To get set up:</p>
+    <ul>
+      <li>Open the extension popup and click <strong>Open Settings</strong></li>
+      <li>Paste your GHL Private Integration API key (150+ characters)</li>
+      <li>Paste your GHL Location ID from your account URL</li>
+      <li>Click <strong>Test Connection</strong> to verify</li>
+      <li>Browse any page with a business phone number — the blue button appears automatically</li>
+    </ul>
+
+    <div class="highlight">
+      Your API key is stored locally in your browser via <code>chrome.storage.sync</code>. It is never sent anywhere except directly to GoHighLevel.
+    </div>
+
+    <h2>Common Issues</h2>
+    <div class="faq-list">
+      <details>
+        <summary>The blue button doesn't appear on a page</summary>
+        <div class="faq-body">
+          The extension only shows the button when it detects a phone number or email address on the page. Try scrolling down — some contact info loads dynamically. On Google Maps, wait 2–3 seconds after the business panel opens. If it still doesn't appear, the page may not have detectable contact data.
+        </div>
+      </details>
+      <details>
+        <summary>GHL rejected the contact with a 400 error</summary>
+        <div class="faq-body">
+          This usually means the contact already exists in GHL. Click <strong>Check GHL</strong> first — if a match is found, use <strong>Update</strong> instead of Push. If the contact is truly new, verify the phone number has exactly 10 digits and the business name field is filled in.
+        </div>
+      </details>
+      <details>
+        <summary>"Invalid API key" or 401 error</summary>
+        <div class="faq-body">
+          Go to GHL → Settings → Integrations → Private Integrations and confirm your key is active. The key should be 150+ characters. Make sure you copied the full key with no extra spaces. Also verify all 5 required scopes are enabled: <code>contacts.readonly</code>, <code>contacts.write</code>, <code>opportunities.readonly</code>, <code>opportunities.write</code>, <code>locations.readonly</code>.
+        </div>
+      </details>
+      <details>
+        <summary>Where do I find my Location ID?</summary>
+        <div class="faq-body">
+          Log into your GHL account. Look at the URL — it will contain something like <code>/location/6B4reCngPYfDkJwOtiM0/</code>. That long string between <code>/location/</code> and the next <code>/</code> is your Location ID.
+        </div>
+      </details>
+      <details>
+        <summary>Contact data is missing (no address or website)</summary>
+        <div class="faq-body">
+          On Google Maps, the address and website load a second or two after the business name. The extension automatically retries 3 times (at 0.8s, 2s, and 4s) to capture the full data. If data is still missing after a few seconds, click the blue button to open the sidebar — you can fill in any missing fields manually before pushing.
+        </div>
+      </details>
+      <details>
+        <summary>The sidebar won't close</summary>
+        <div class="faq-body">
+          Click the <strong>✕</strong> button at the top right of the sidebar panel. If that doesn't work, clicking the blue floating button again will toggle the sidebar closed.
+        </div>
+      </details>
+      <details>
+        <summary>How do I update the extension?</summary>
+        <div class="faq-body">
+          Chrome updates extensions automatically. To force an update immediately, go to <code>chrome://extensions</code>, enable Developer Mode (top right), then click <strong>Update</strong>.
+        </div>
+      </details>
+    </div>
+
+    <div class="contact-box">
+      <strong>Still need help?</strong>
+      Email us and we'll get back to you within 1 business day.<br><br>
+      <a href="mailto:support@arboradvantage.com">support@arboradvantage.com</a>
+    </div>
+
+    <footer>
+      <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+      <a href="changelog.html">What's New</a> &nbsp;·&nbsp;
+      Powered by Arbor Advantage
+    </footer>
+  </div>
+</body>
+</html>
