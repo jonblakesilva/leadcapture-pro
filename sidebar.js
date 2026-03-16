@@ -194,8 +194,12 @@
       return 'Invalid API key. Go to Settings and check your GHL credentials.';
     if (msg.includes('403'))
       return "Your API key doesn't have permission for this location.";
-    if (msg.includes('400'))
-      return 'GHL rejected the contact (400). Most likely: contact already exists and "Allow Duplicates" is disabled. Click "Check GHL" first to find the existing record, then use Update instead of Push.';
+    if (msg.includes('400')) {
+      // Show the actual GHL error so we can see the real reason
+      const actualError = msg.replace(/something went wrong \(400\):\s*/i, '').trim();
+      const hint = 'If this contact exists in GHL, click "Check GHL" first then use Update. If not, check the phone number has 10 digits and the name field is filled in.';
+      return actualError ? `GHL rejected (400): ${actualError} — ${hint}` : `GHL rejected (400) — ${hint}`;
+    }
     if (msg.includes('422'))
       return 'Contact data is invalid. Check the phone number format (need 10 digits) and email.';
     if (msg.includes('429'))
@@ -1932,7 +1936,11 @@
     el('close-btn').addEventListener('click', () => {
       // Target '*' is intentional: the parent is the host page whose origin is unknown.
       // Messages contain no sensitive data; content.js validates the source on receipt.
-      window.parent.postMessage({ type: 'LCP_CLOSE_SIDEBAR' }, '*');
+      try {
+        window.parent.postMessage({ type: 'LCP_CLOSE_SIDEBAR' }, '*');
+      } catch (_) {}
+      // Fallback: if sidebar was somehow opened outside an iframe, close the window
+      if (window.parent === window) window.close();
     });
 
     // Settings button (footer)
