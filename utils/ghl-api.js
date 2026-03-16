@@ -93,20 +93,13 @@ export async function searchContact({ apiKey, locationId, phone, email }) {
   if (!phone && !email) return null;
 
   return withRetry(async () => {
-    // GHL v2: search is POST /contacts/search, not GET /contacts/search (404)
-    const filter = phone
-      ? { field: 'phone', operator: 'eq', value: phone }
-      : { field: 'email', operator: 'eq', value: email };
-
-    const res = await fetch(`${BASE_URL}/contacts/search`, {
-      method: 'POST',
+    // GHL v2: simple text search via GET /contacts/ with query param.
+    // The GET /contacts/search path (with /search segment) returns 404.
+    // POST /contacts/search filter body has unreliable phone matching.
+    const params = new URLSearchParams({ locationId, query: phone || email });
+    const res = await fetch(`${BASE_URL}/contacts/?${params}`, {
+      method: 'GET',
       headers: makeHeaders(apiKey),
-      body: JSON.stringify({
-        locationId,
-        page: 1,
-        pageSize: 5,
-        filters: [filter],
-      }),
     });
     const data = await safeParse(res);
     if (!res.ok) throw buildError(res, data);
