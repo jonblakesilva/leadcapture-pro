@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadCapture Pro</title>
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+  <div id="app" class="app">
+
+    <!-- ── Header ─────────────────────────────────────────────────────────── -->
+    <header class="lcp-header">
+      <div class="header-brand">
+        <img id="agency-logo" class="agency-logo" src="" alt="Agency Logo" hidden>
+        <span id="agency-name" class="agency-name">LeadCapture Pro</span>
+      </div>
+      <button id="close-btn" class="icon-btn" title="Close sidebar" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- ── Changelog banner ─────────────────────────────────────────────────── -->
+    <div id="changelog-banner" class="changelog-banner hidden">
+      <span class="changelog-icon">✨</span>
+      <span id="changelog-text" class="changelog-text">LeadCapture Pro updated</span>
+      <a id="changelog-link" href="changelog.html" target="_blank" rel="noopener" class="changelog-link">What's new →</a>
+      <button id="changelog-dismiss" class="changelog-dismiss" aria-label="Dismiss">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- ── Loading view ────────────────────────────────────────────────────── -->
+    <div id="loading-view" class="view">
+      <div class="center-state">
+        <div class="spinner spinner-lg"></div>
+        <p class="state-text">Loading contact data…</p>
+      </div>
+    </div>
+
+    <!-- ── Setup required view ─────────────────────────────────────────────── -->
+    <div id="setup-view" class="view hidden">
+      <div class="center-state">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <h3 class="state-title">Setup Required</h3>
+        <p class="state-text">Connect your GoHighLevel account to start capturing leads.</p>
+        <button id="open-settings-btn" class="lcp-btn lcp-btn-primary">Open Settings</button>
+      </div>
+    </div>
+
+    <!-- ── Empty view ──────────────────────────────────────────────────────── -->
+    <div id="empty-view" class="view hidden">
+      <div class="center-state">
+        <div class="state-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
+          </svg>
+        </div>
+        <h3 class="state-title">No Contacts Found</h3>
+        <p class="state-text">No phone numbers or email addresses were detected on this page.</p>
+        <button id="manual-from-empty-btn" class="lcp-btn lcp-btn-secondary" style="margin-top:8px">Enter Contact Manually</button>
+      </div>
+
+      <!-- Daily Prospecting System -->
+      <div class="dps-panel">
+        <button class="dps-toggle" id="dps-tips-toggle">
+          <div class="dps-toggle-left">
+            <span class="dps-badge-time">15 MIN</span>
+            <span class="dps-toggle-title">Daily Prospecting System</span>
+          </div>
+          <span class="dps-tips-chevron">▼</span>
+        </button>
+        <div class="dps-body hidden" id="dps-tips-body">
+          <div class="dps-goal-bar">
+            <span class="dps-goal-label">Daily goal</span>
+            <span class="dps-goal-num">20 prospects</span>
+          </div>
+
+          <div class="dps-steps-list">
+            <div class="dps-step-row">
+              <div class="dps-step-left">
+                <span class="dps-step-dot">1</span>
+                <div class="dps-step-line"></div>
+              </div>
+              <div class="dps-step-content">
+                <div class="dps-step-header-row">
+                  <span class="dps-step-name">Find prospects</span>
+                  <span class="dps-step-time-badge">2 min</span>
+                </div>
+                <div class="dps-step-desc">Search Google Maps — <strong>"roofers toledo oh"</strong>, "dentist chicago il", etc.</div>
+              </div>
+            </div>
+
+            <div class="dps-step-row">
+              <div class="dps-step-left">
+                <span class="dps-step-dot">2</span>
+                <div class="dps-step-line"></div>
+              </div>
+              <div class="dps-step-content">
+                <div class="dps-step-header-row">
+                  <span class="dps-step-name">Score &amp; filter</span>
+                  <span class="dps-step-time-badge">5 min</span>
+                </div>
+                <div class="dps-step-desc">Use <strong>No Website</strong> + <strong>Low Rating</strong> filters — Hot Leads are businesses under 4★ with no site.</div>
+              </div>
+            </div>
+
+            <div class="dps-step-row">
+              <div class="dps-step-left">
+                <span class="dps-step-dot">3</span>
+                <div class="dps-step-line"></div>
+              </div>
+              <div class="dps-step-content">
+                <div class="dps-step-header-row">
+                  <span class="dps-step-name">Batch push to GHL</span>
+                  <span class="dps-step-time-badge">3 min</span>
+                </div>
+                <div class="dps-step-desc">Select all → push with tag <code>roof-toledo-oh</code>. GHL Smart List filters them automatically.</div>
+              </div>
+            </div>
+
+            <div class="dps-step-row">
+              <div class="dps-step-left">
+                <span class="dps-step-dot">4</span>
+                <div class="dps-step-line"></div>
+              </div>
+              <div class="dps-step-content">
+                <div class="dps-step-header-row">
+                  <span class="dps-step-name">Record Loom audit</span>
+                  <span class="dps-step-time-badge">3 min</span>
+                </div>
+                <div class="dps-step-desc">Click <strong>Record Audit Video</strong> on your top Hot Lead. 90-second screen share of their site.</div>
+              </div>
+            </div>
+
+            <div class="dps-step-row dps-step-row-last">
+              <div class="dps-step-left">
+                <span class="dps-step-dot dps-step-dot-fire">5</span>
+              </div>
+              <div class="dps-step-content">
+                <div class="dps-step-header-row">
+                  <span class="dps-step-name">GHL fires outreach</span>
+                  <span class="dps-step-time-badge dps-step-time-auto">auto</span>
+                </div>
+                <div class="dps-step-desc">Your automation sends the Loom link + follow-ups automatically. <strong>You just book calls.</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dps-projection">
+            <div class="dps-projection-row">
+              <span>20 contacts/day</span><span class="dps-proj-arrow">→</span>
+              <span>~10% reply</span><span class="dps-proj-arrow">→</span>
+              <span class="dps-projection-highlight">$2–6K MRR/mo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Contact list view ───────────────────────────────────────────────── -->
+    <div id="contact-list-view" class="view hidden">
+      <div class="view-subheader">
+        <span class="view-subheader-title">Review contacts</span>
+        <span id="list-count" class="count-pill"></span>
+      </div>
+      <div class="list-toolbar">
+        <label class="cb-all-wrap">
+          <input type="checkbox" id="select-all-cb" checked>
+          <span>Select all</span>
+        </label>
+        <button id="push-selected-btn" class="lcp-btn lcp-btn-primary lcp-btn-sm" disabled title="Push all checked contacts to GHL at once. Duplicate contacts are skipped automatically.">
+          <span class="btn-label">Push <span id="selected-count">0</span></span>
+          <span class="btn-spin hidden"></span>
+        </button>
+      </div>
+      <!-- ── Batch options ─────────────────────────────────────────────────── -->
+      <div class="batch-options-bar">
+        <button id="batch-options-toggle" class="batch-options-toggle">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><path d="M2 4h12M4 8h8M6 12h4"/></svg>
+          Batch options
+          <svg id="batch-options-chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="transition:transform 200ms ease"><path d="M4 6l4 4 4-4"/></svg>
+        </button>
+      </div>
+      <div id="batch-options-panel" class="batch-options-panel hidden">
+        <div class="batch-options-inner">
+          <div class="batch-field-group">
+            <label class="batch-field-label">Extra tags for all contacts</label>
+            <div id="batch-tags-pill-container" class="tags-pill-container">
+              <div id="batch-tags-pills" class="tags-pills"></div>
+              <input id="batch-tags-type-input" class="tags-type-input" placeholder="Add tag, press Enter…">
+              <input type="hidden" id="batch-tags-input">
+            </div>
+          </div>
+          <div class="batch-field-group">
+            <label class="batch-field-label">Note for all contacts</label>
+            <textarea id="batch-note" class="lcp-input lcp-textarea" rows="2" placeholder="Add a note that will be attached to every pushed contact…"></textarea>
+          </div>
+        </div>
+      </div>
+      <div id="contact-list" class="contact-list"></div>
+    </div>
+
+    <!-- ── Contact detail view ─────────────────────────────────────────────── -->
+    <div id="contact-detail-view" class="view hidden">
+      <!-- Sub-header row -->
+      <div class="view-subheader">
+        <button id="back-btn" class="back-btn hidden" title="Back to list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5m0 0l7 7m-7-7l7-7"/>
+          </svg>
+          Back
+        </button>
+        <span id="source-badge" class="source-badge" title="The source tag detected from this page — automatically added to every contact you push here.">web-lead</span>
+      </div>
+
+      <!-- Marketing / Opportunity Score bar -->
+      <div id="marketing-score-bar" class="marketing-score-bar hidden"></div>
+
+      <!-- Marketing Problem Detector panel -->
+      <div id="marketing-problems" class="mkt-problems hidden"></div>
+
+      <!-- Review Gap Detector panel -->
+      <div id="review-gap-panel" class="review-gap-panel hidden"></div>
+
+      <div class="lcp-scroll">
+
+        <!-- Contact information -->
+        <section class="lcp-section">
+          <h3 class="section-title">Contact Information</h3>
+
+          <div class="field-group">
+            <label class="field-label" for="f-name">Business Name
+              <i class="tip-icon" data-tip="The name auto-detected from the page. This becomes the contact name and company name in GHL.">?</i>
+            </label>
+            <input type="text" id="f-name" class="lcp-input" placeholder="Business name">
+          </div>
+
+          <div class="field-group" id="phone-field-group">
+            <label class="field-label">Phone
+              <i class="tip-icon" data-tip="Phone numbers found on this page. The dot color shows confidence: green = from a tel: link or structured data, yellow = found in page text, red = low confidence.">?</i>
+            </label>
+            <div id="phone-selector" class="option-selector"></div>
+          </div>
+
+          <div class="field-group" id="email-field-group">
+            <label class="field-label">Email
+              <i class="tip-icon" data-tip="Email addresses detected on this page. Select the one you want to push to GHL.">?</i>
+            </label>
+            <div id="email-selector" class="option-selector"></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-address">Address
+              <i class="tip-icon" data-tip="Street address auto-detected from the page. Will be saved to the contact's Address field in GHL.">?</i>
+            </label>
+            <input type="text" id="f-address" class="lcp-input" placeholder="Street address, City, State ZIP">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-website">Website
+              <i class="tip-icon" data-tip="The website URL for this business. Saved to the contact's Website field in GHL.">?</i>
+            </label>
+            <input type="url" id="f-website" class="lcp-input" placeholder="https://example.com">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-contact-person">Point of Contact <span class="field-label-optional">(optional)</span>
+              <i class="tip-icon" data-tip="The person you spoke with or will reach out to at this business. Saved as the contact's first and last name in GHL alongside the business.">?</i>
+            </label>
+            <input type="text" id="f-contact-person" class="lcp-input" placeholder="e.g. John Smith">
+          </div>
+        </section>
+
+        <!-- CRM settings -->
+        <section class="lcp-section">
+          <h3 class="section-title">CRM Settings</h3>
+
+          <div class="field-group">
+            <label class="field-label" for="pipeline-select">Pipeline
+              <i class="tip-icon" data-tip="The GHL pipeline this contact will be added to as an opportunity. Set a default in Settings so you don't have to pick it every time.">?</i>
+            </label>
+            <div class="select-wrapper">
+              <select id="pipeline-select" class="lcp-select" title="Select the GHL pipeline for this contact">
+                <option value="">Loading pipelines…</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="stage-select">Stage
+              <i class="tip-icon" data-tip="The stage within the pipeline where this contact will land. For example: New Lead, Contacted, or Qualified.">?</i>
+            </label>
+            <div class="select-wrapper">
+              <select id="stage-select" class="lcp-select" disabled title="Select the pipeline stage for this contact">
+                <option value="">Select a pipeline first</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="workflow-select">Workflow <span class="field-label-optional">(optional)</span>
+              <i class="tip-icon" data-tip="After the contact is pushed, they will be enrolled in this GHL automation workflow — useful for sending a welcome text or email automatically.">?</i>
+            </label>
+            <div class="select-wrapper">
+              <select id="workflow-select" class="lcp-select" title="Optionally enroll this contact in a GHL workflow after pushing">
+                <option value="">None — skip workflow</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Tags
+              <i class="tip-icon" data-tip="Tags applied to the contact in GHL. The source tag (e.g. yelp-lead) is locked and always included. Type a tag and press Enter or comma to add more. Start typing to search your existing GHL tags.">?</i>
+            </label>
+            <div id="tags-pill-container" class="tags-pill-container">
+              <div id="tags-pills" class="tags-pills"></div>
+              <input id="tags-type-input" class="tags-type-input" placeholder="Add tag, press Enter…">
+              <input type="hidden" id="tags-input">
+            </div>
+            <p class="field-hint">Press Enter or comma to add. Source tag is added automatically.</p>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="f-note">Note
+              <i class="tip-icon" data-tip="This note is saved to the contact in GHL. After pushing, find it under the Activities tab on the contact record — not in the main contact fields.">?</i>
+            </label>
+            <textarea id="f-note" class="lcp-input lcp-textarea" rows="3" placeholder="Add a note to this contact record…"></textarea>
+            <div id="note-auto-preview" class="note-auto-preview hidden"></div>
+            <p class="field-hint">Notes appear under the <strong>Activities</strong> tab in GHL.</p>
+          </div>
+        </section>
+
+        <!-- GHL check result -->
+        <div id="existing-contact-banner" class="alert alert-warning hidden">
+          <div class="alert-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+            </svg>
+          </div>
+          <div class="alert-body">
+            <p class="alert-title">Contact already in GHL</p>
+            <p id="existing-contact-name" class="alert-sub"></p>
+            <p id="existing-contact-meta" class="alert-meta"></p>
+            <div id="existing-contact-tags" class="tag-list"></div>
+          </div>
+          <div class="alert-actions">
+            <a id="existing-link" href="#" target="_blank" rel="noopener" class="lcp-btn lcp-btn-ghost lcp-btn-sm" title="Open this contact's record in GoHighLevel">View in GHL</a>
+            <button id="update-btn" class="lcp-btn lcp-btn-secondary lcp-btn-sm" title="Fill in any blank fields on the existing GHL contact with data from this page, and add new tags.">Update</button>
+            <button id="skip-btn" class="lcp-btn lcp-btn-ghost lcp-btn-sm" title="Dismiss this warning and push as a new contact anyway.">Skip</button>
+          </div>
+        </div>
+
+        <div id="not-found-banner" class="alert alert-success hidden">
+          <div class="alert-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="alert-body">
+            <p class="alert-title">No existing contact found — ready to push!</p>
+          </div>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="lcp-actions lcp-actions-stack">
+          <button id="push-btn" class="lcp-btn lcp-btn-primary lcp-btn-full" title="Create a new contact in GHL with the details above. Checks for duplicates first.">
+            <span class="btn-label">Push to GHL</span>
+            <span class="btn-spin hidden"></span>
+          </button>
+          <button id="check-btn" class="lcp-btn lcp-btn-secondary lcp-btn-full" title="Search GHL to see if this contact already exists before pushing.">
+            <span class="btn-label">Check GHL</span>
+            <span class="btn-spin hidden"></span>
+          </button>
+          <button id="skip-lead-btn" class="lcp-btn lcp-btn-ghost lcp-btn-full" title="Skip this lead — don't push to GHL and move to the next contact.">
+            <span class="btn-label">Skip Lead</span>
+          </button>
+        </div>
+
+        <!-- Manual entry / enrich links -->
+        <div class="manual-entry-link-wrap">
+          <button id="manual-entry-btn" class="link-btn" title="Clear detected data and type in contact details manually.">Enter contact manually</button>
+          <span class="link-btn-sep">·</span>
+          <button id="enrich-btn" class="link-btn" title="Open a Google search for this contact to find more info like email, social profiles, or address.">Search web for lead</button>
+          <span class="link-btn-sep">·</span>
+          <button id="claude-btn" class="link-btn link-btn-claude" title="Generate a personalized outreach prompt for this lead — Email, SMS, Loom script, and LinkedIn DM.">Generate Outreach</button>
+        </div>
+
+        <!-- Audit Video button (only shown when website is present) -->
+        <div id="audit-video-section" class="audit-video-section hidden">
+          <button id="audit-video-btn" class="lcp-btn lcp-btn-audit lcp-btn-full" title="Open the business website and Loom recorder, and show your audit checklist and talking points">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/>
+            </svg>
+            <span>Record Audit Video</span>
+          </button>
+        </div>
+
+        <!-- Success state -->
+        <div id="success-banner" class="alert alert-success hidden">
+          <div class="alert-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="alert-body">
+            <p class="alert-title">Contact pushed successfully!</p>
+            <a id="new-contact-link" href="#" target="_blank" rel="noopener" class="alert-link">View in GHL →</a>
+          </div>
+        </div>
+
+        <!-- Error state -->
+        <div id="error-banner" class="alert alert-error hidden">
+          <div class="alert-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+            </svg>
+          </div>
+          <div class="alert-body">
+            <p id="error-message" class="alert-title">An error occurred.</p>
+          </div>
+          <button id="error-dismiss" class="icon-btn icon-btn-sm" title="Dismiss">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <!-- Audit Panel (shown after clicking Record Audit Video) -->
+        <div id="audit-panel" class="audit-panel hidden">
+          <div class="audit-panel-header">
+            <span class="audit-panel-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+              Recording Session Active
+            </span>
+            <button id="audit-panel-close" class="icon-btn icon-btn-sm" title="Close audit panel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div id="audit-lead-card" class="audit-lead-card"></div>
+          <div id="audit-talking-points" class="audit-talking-points"></div>
+          <div class="audit-checklist">
+            <p class="audit-checklist-title">Audit Checklist</p>
+            <div id="audit-checklist-items"></div>
+          </div>
+        </div>
+
+      </div><!-- /.lcp-scroll -->
+    </div><!-- /#contact-detail-view -->
+
+  </div><!-- /#app -->
+
+  <!-- ── Outreach Prompt Modal ──────────────────────────────────────────── -->
+  <div id="outreach-modal" class="outreach-modal hidden" role="dialog" aria-modal="true" aria-label="Generated Outreach Prompt">
+    <div class="outreach-modal-backdrop"></div>
+    <div class="outreach-modal-box">
+      <div class="outreach-modal-header">
+        <span class="outreach-modal-title">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Outreach Prompt Ready
+        </span>
+        <button id="outreach-modal-close" class="icon-btn icon-btn-sm" title="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="om-channels">
+        <span class="om-pill om-pill-email">✉️ Email</span>
+        <span class="om-pill om-pill-sms">💬 SMS</span>
+        <span class="om-pill om-pill-fb">📘 FB DM</span>
+        <span class="om-pill om-pill-ig">📸 IG DM</span>
+        <span class="om-pill om-pill-linkedin">💼 LinkedIn</span>
+        <span class="om-pill om-pill-loom">🎥 Loom</span>
+      </div>
+      <p class="outreach-modal-hint">Paste into <a href="https://claude.ai" target="_blank" rel="noopener">Claude.ai</a> — generates all 6 channels with NEPQ objection handling.</p>
+      <textarea id="outreach-modal-text" class="outreach-modal-textarea" readonly spellcheck="false"></textarea>
+      <div class="outreach-modal-actions">
+        <button id="outreach-modal-copy" class="btn btn-primary btn-sm">Copy Prompt</button>
+        <a href="https://claude.ai" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Open Claude.ai →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ──────────────────────────────────────────────────────────── -->
+  <footer class="lcp-footer">
+    <div class="footer-left">
+      <span class="footer-powered">Powered by <span id="footer-agency">LeadCapture Pro</span></span>
+      <span id="session-stats" class="footer-stats hidden"></span>
+    </div>
+    <button id="settings-btn" class="icon-btn icon-btn-sm" title="Open Settings">
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </footer>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>

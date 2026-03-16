@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's New — LeadCapture Pro</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #f8fafc;
+      padding: 40px 20px;
+    }
+    .page {
+      max-width: 620px;
+      margin: 0 auto;
+    }
+    .page-header {
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+    }
+    .subtitle { font-size: 13px; color: #64748b; }
+    .release {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .release-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .version-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: #0f172a;
+      color: #fff;
+      letter-spacing: 0.02em;
+    }
+    .version-pill.latest {
+      background: #2563eb;
+    }
+    .release-date {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-left: auto;
+    }
+    .latest-tag {
+      font-size: 10px;
+      font-weight: 600;
+      background: #dcfce7;
+      color: #16a34a;
+      border-radius: 20px;
+      padding: 2px 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .release-body { padding: 14px 18px; }
+    .change-group { margin-bottom: 12px; }
+    .change-group:last-child { margin-bottom: 0; }
+    .change-type {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 5px;
+    }
+    .change-type.fix { color: #dc2626; }
+    .change-type.feat { color: #2563eb; }
+    .change-type.improve { color: #7c3aed; }
+    .change-type.perf { color: #d97706; }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      font-size: 13px;
+      color: #334155;
+      padding: 2px 0 2px 16px;
+      position: relative;
+    }
+    li::before {
+      content: '·';
+      position: absolute;
+      left: 5px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div class="badge">Changelog</div>
+      <h1>What's New in LeadCapture Pro</h1>
+      <p class="subtitle">Updates, fixes, and improvements</p>
+    </div>
+
+    <!-- v1.7.1 -->
+    <div class="release">
+      <div class="release-header">
+        <span class="version-pill latest">v1.7.1</span>
+        <span class="latest-tag">Latest</span>
+        <span class="release-date">March 2026</span>
+      </div>
+      <div class="release-body">
+        <div class="change-group">
+          <div class="change-type fix">Bug Fixes</div>
+          <ul>
+            <li>Fixed 404 error on contact search — GHL v2 API requires POST /contacts/search, not GET</li>
+            <li>Contact duplicate detection now works correctly when checking by phone or email</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- v1.7.0 -->
+    <div class="release">
+      <div class="release-header">
+        <span class="version-pill">v1.7.0</span>
+        <span class="release-date">February 2026</span>
+      </div>
+      <div class="release-body">
+        <div class="change-group">
+          <div class="change-type feat">New Features</div>
+          <ul>
+            <li>Workflow enrollment — enroll pushed contacts into a GHL automation workflow in one click</li>
+            <li>Batch push with shared tags and notes for all selected contacts</li>
+            <li>Outreach prompt generator — produces Email, SMS, Loom, LinkedIn, and FB/IG DM copy</li>
+            <li>Audit Video button — opens Loom recorder alongside the business website</li>
+            <li>Marketing Problem Detector — scans prospect websites for Pixel, HTTPS, meta tags</li>
+            <li>Review Gap panel — shows star rating and review count from Google Maps</li>
+            <li>Daily Prospecting System panel on the empty state view</li>
+            <li>GHL tag autocomplete — type to search existing tags in your location</li>
+            <li>Location profiles — save multiple GHL locations and switch between them</li>
+            <li>Export / import settings as JSON (API key excluded from export)</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="change-type improve">Improvements</div>
+          <ul>
+            <li>Opportunity score now shows label (Hot / Warm / Cold / Pass) and color bar</li>
+            <li>Google Maps SPA retry — address and website fields now populate after Maps loads</li>
+            <li>Sidebar tooltips repositioned using fixed positioning to prevent clipping</li>
+            <li>Brand color preset swatches in settings</li>
+            <li>API key character counter with length validation hint</li>
+            <li>Logo URL validator with user-visible warning on load failure</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="change-type fix">Bug Fixes</div>
+          <ul>
+            <li>Business contacts no longer fail with 400 — companyName is sent without firstName/lastName</li>
+            <li>Clipboard copy works correctly (removed deprecated execCommand fallback)</li>
+            <li>Sidebar tooltip no longer clipped by overflow containers</li>
+            <li>storage.onChanged no longer skips enrichment when detail view is already open</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- v1.6.0 -->
+    <div class="release">
+      <div class="release-header">
+        <span class="version-pill">v1.6.0</span>
+        <span class="release-date">January 2026</span>
+      </div>
+      <div class="release-body">
+        <div class="change-group">
+          <div class="change-type feat">New Features</div>
+          <ul>
+            <li>Opportunity / marketing score — rates prospects 0–100 based on digital marketing gaps</li>
+            <li>Point of Contact field — save a person's name alongside the business in GHL</li>
+            <li>Skip Lead button — dismiss a contact without pushing</li>
+            <li>Manual contact entry mode — clear detected data and type details manually</li>
+            <li>Session stats in sidebar footer (contacts pushed this session)</li>
+            <li>Auto-open GHL contact page after push (toggle in settings)</li>
+          </ul>
+        </div>
+        <div class="change-group">
+          <div class="change-type improve">Improvements</div>
+          <ul>
+            <li>SPA navigation detection — sidebar and button reset correctly on Google Maps navigation</li>
+            <li>Phone formatter validates and enforces E.164 (+1XXXXXXXXXX) before push</li>
+            <li>Rate limiter — queues GHL API requests to stay under 10/sec limit</li>
+            <li>Retry logic on 429 rate limit responses with exponential backoff</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- v1.0.0 -->
+    <div class="release">
+      <div class="release-header">
+        <span class="version-pill">v1.0.0</span>
+        <span class="release-date">December 2025</span>
+      </div>
+      <div class="release-body">
+        <div class="change-group">
+          <div class="change-type feat">Initial Release</div>
+          <ul>
+            <li>Contact detection from phone numbers, emails, and schema.org structured data</li>
+            <li>Source detection — Google Maps, Yelp, Facebook, Yellow Pages, and generic web</li>
+            <li>Floating sidebar with Shadow DOM isolation (no style conflicts with host pages)</li>
+            <li>Push contacts to GHL with tags, pipeline, and stage selection</li>
+            <li>Duplicate check before push</li>
+            <li>Multi-step setup wizard with GHL connection test</li>
+            <li>Agency white-label branding (name, logo, color)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

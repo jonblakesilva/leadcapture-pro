@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadCapture Pro</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 260px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fff;
+      color: #0f172a;
+    }
+    .popup-header {
+      background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
+      padding: 14px 16px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .popup-header-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    .popup-header-title {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .popup-header-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 10px;
+      margin-top: 1px;
+    }
+    .popup-body {
+      padding: 14px 16px;
+    }
+    .popup-step {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 10px;
+    }
+    .popup-step:last-child { margin-bottom: 0; }
+    .popup-step-num {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .popup-step-text {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .popup-step-text strong { color: #0f172a; }
+    .popup-divider {
+      height: 1px;
+      background: #e2e8f0;
+      margin: 12px 0;
+    }
+    .popup-footer {
+      padding: 0 16px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .popup-settings-btn {
+      font-size: 11px;
+      color: #64748b;
+      background: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .popup-settings-btn:hover { background: #f8fafc; }
+    .popup-version {
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .popup-hint {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 9px 11px;
+      font-size: 11px;
+      color: #1e40af;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup-header">
+    <div class="popup-header-icon">🎯</div>
+    <div>
+      <div class="popup-header-title" id="popup-title">LeadCapture Pro</div>
+      <div class="popup-header-sub">Lead capture &amp; CRM enrichment</div>
+    </div>
+  </div>
+
+  <div class="popup-body">
+    <div class="popup-hint">
+      Look for the <strong>green button</strong> in the bottom-right corner of the page to open the sidebar.
+    </div>
+
+    <div class="popup-step">
+      <div class="popup-step-num">1</div>
+      <div class="popup-step-text">Go to <strong>Google Maps</strong> or search for local businesses</div>
+    </div>
+    <div class="popup-step">
+      <div class="popup-step-num">2</div>
+      <div class="popup-step-text">Click the <strong>green floating button</strong> — LeadCapture detects contacts automatically</div>
+    </div>
+    <div class="popup-step">
+      <div class="popup-step-num">3</div>
+      <div class="popup-step-text">Review, tag, and <strong>push to GHL</strong> in one click</div>
+    </div>
+  </div>
+
+  <div class="popup-divider"></div>
+
+  <div class="popup-footer">
+    <button class="popup-settings-btn" id="open-settings">⚙ Settings</button>
+    <span class="popup-version" id="popup-version">v1.7.1</span>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

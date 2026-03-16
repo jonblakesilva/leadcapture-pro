@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — LeadCapture Pro</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1e293b;
+      background: #f8fafc;
+      padding: 40px 20px;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 40px 48px;
+    }
+    .badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+    .meta {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    h2 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 28px 0 8px;
+    }
+    p { margin-bottom: 12px; color: #334155; }
+    ul {
+      margin: 8px 0 12px 20px;
+      color: #334155;
+    }
+    li { margin-bottom: 5px; }
+    .highlight {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      border-radius: 0 6px 6px 0;
+      padding: 10px 14px;
+      margin: 12px 0;
+      font-size: 13px;
+      color: #166534;
+    }
+    .contact-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #475569;
+    }
+    .contact-box strong { color: #0f172a; }
+    footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid #f1f5f9;
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="badge">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">LeadCapture Pro Chrome Extension &nbsp;·&nbsp; Last updated: March 2026</p>
+
+    <h2>Overview</h2>
+    <p>LeadCapture Pro is a Chrome extension that detects business contact information on web pages and lets you push that data to your own GoHighLevel (GHL) CRM account. This policy explains exactly what data we handle, how, and why.</p>
+
+    <div class="highlight">
+      LeadCapture Pro does not collect, store, or transmit your data to any server we operate. All data stays on your device or goes directly to your own GHL account.
+    </div>
+
+    <h2>Data We Detect</h2>
+    <p>When you visit a web page, LeadCapture Pro scans for:</p>
+    <ul>
+      <li>Business names</li>
+      <li>Phone numbers</li>
+      <li>Email addresses</li>
+      <li>Physical addresses</li>
+      <li>Website URLs</li>
+      <li>Review counts and ratings (from Google Maps)</li>
+    </ul>
+    <p>This data is detected locally in your browser. It is never sent to LeadCapture Pro servers — because there are none.</p>
+
+    <h2>How Detected Data Is Stored</h2>
+    <p><strong>Temporary tab storage</strong> — Detected contacts are saved to <code>chrome.storage.local</code> keyed by your tab ID. This data is automatically cleared when you navigate away from a page or close the tab.</p>
+    <p><strong>Settings storage</strong> — Your agency branding, GHL API key, and Location ID are saved to <code>chrome.storage.sync</code> so settings persist across devices signed into the same Chrome profile.</p>
+
+    <h2>Data Sent to GoHighLevel</h2>
+    <p>When you click "Push to GHL," the contact details you reviewed and approved are sent directly from your browser to the GoHighLevel API using your own API key. This is your data going to your own CRM account.</p>
+    <p>LeadCapture Pro does not intercept, log, or retain a copy of any contact data you push.</p>
+    <p>GoHighLevel's own privacy policy governs how they handle data stored in your GHL account. See <strong>gohighlevel.com</strong> for their terms.</p>
+
+    <h2>Website Scanning (Marketing Analysis)</h2>
+    <p>If a detected contact has a website, LeadCapture Pro may fetch that website's HTML from your browser to check for marketing signals (HTTPS, meta tags, pixel presence). This fetch is made directly from your browser — no proxy or intermediary server is involved.</p>
+
+    <h2>Permissions Used</h2>
+    <ul>
+      <li><strong>storage</strong> — Save your settings and temporary contact data locally</li>
+      <li><strong>tabs</strong> — Identify the active tab to associate detected contacts</li>
+      <li><strong>activeTab</strong> — Read the current page to detect contact information</li>
+      <li><strong>host_permissions (&lt;all_urls&gt;)</strong> — Run contact detection on any web page you visit (only when you have the extension enabled)</li>
+    </ul>
+
+    <h2>Data Sharing</h2>
+    <p>We do not sell, share, or transmit your data to any third party. The only outbound connection made by this extension is to the GoHighLevel API at <code>services.leadconnectorhq.com</code> — using credentials you provided and data you explicitly chose to push.</p>
+
+    <h2>Data Retention &amp; Deletion</h2>
+    <p>To delete all extension data: open Chrome settings, navigate to Extensions, and remove LeadCapture Pro. All <code>chrome.storage</code> data is deleted automatically when the extension is uninstalled.</p>
+    <p>To clear only your settings without uninstalling: open the extension settings and use the browser's built-in site data controls for the extension.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>LeadCapture Pro is a B2B tool intended for marketing professionals. It is not directed at children under 13 and we do not knowingly handle any data from minors.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If this policy changes materially, we will update the "Last updated" date above. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+
+    <div class="contact-box">
+      <strong>Questions about privacy?</strong><br>
+      Contact us through the Chrome Web Store listing page for LeadCapture Pro.
+    </div>
+
+    <footer>LeadCapture Pro &nbsp;·&nbsp; Chrome Extension &nbsp;·&nbsp; Privacy Policy</footer>
+  </div>
+</body>
+</html>

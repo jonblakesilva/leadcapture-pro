@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LeadCapture Pro — Setup</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- ── Page header ──────────────────────────────────────────────────────── -->
+    <header class="page-header">
+      <div class="page-header-inner">
+        <div class="header-brand">
+          <img id="header-logo" class="header-logo" src="" alt="" hidden>
+          <div>
+            <h1 id="header-title" class="header-title">LeadCapture Pro</h1>
+            <p class="header-sub">Setup &amp; Configuration</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="export-btn" class="s-btn s-btn-ghost s-btn-sm" title="Export settings as JSON">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+            Export
+          </button>
+          <label class="s-btn s-btn-ghost s-btn-sm" title="Import settings from JSON">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            Import
+            <input type="file" id="import-input" accept=".json" hidden>
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-body">
+
+      <!-- ── Step nav ───────────────────────────────────────────────────────── -->
+      <nav class="step-nav" aria-label="Setup steps">
+        <button class="step-nav-item active" data-step="1">
+          <span class="step-num">1</span>
+          <span class="step-label">Branding</span>
+        </button>
+        <div class="step-connector"></div>
+        <button class="step-nav-item" data-step="2">
+          <span class="step-num">2</span>
+          <span class="step-label">GHL Connection</span>
+        </button>
+        <div class="step-connector"></div>
+        <button class="step-nav-item" data-step="3">
+          <span class="step-num">3</span>
+          <span class="step-label">Defaults</span>
+        </button>
+        <div class="step-connector"></div>
+        <button class="step-nav-item" data-step="4">
+          <span class="step-num">4</span>
+          <span class="step-label">Advanced</span>
+        </button>
+        <div class="step-connector"></div>
+        <button class="step-nav-item" data-step="5">
+          <span class="step-num">5</span>
+          <span class="step-label">Outreach</span>
+        </button>
+      </nav>
+
+      <div class="steps-container">
+
+        <!-- ── Step 1: Branding ─────────────────────────────────────────────── -->
+        <div class="step-panel active" data-step="1">
+          <div class="step-header">
+            <h2 class="step-title">Agency Branding</h2>
+            <p class="step-desc">Customize how the extension appears to your clients.</p>
+          </div>
+
+          <!-- Getting Started checklist -->
+          <div class="card setup-checklist" id="setup-checklist">
+            <h3 class="card-section-title">Getting Started</h3>
+            <p class="card-section-desc">Complete these steps before going live.</p>
+            <ul class="checklist-items">
+              <li class="checklist-item" id="check-branding">
+                <span class="check-icon">○</span>
+                <span class="check-text">Set your agency name &amp; branding</span>
+                <button class="check-goto s-btn s-btn-ghost s-btn-sm" data-goto-step="1">Set up →</button>
+              </li>
+              <li class="checklist-item" id="check-api">
+                <span class="check-icon">○</span>
+                <span class="check-text">Enter your GHL API key</span>
+                <button class="check-goto s-btn s-btn-ghost s-btn-sm" data-goto-step="2">Connect →</button>
+              </li>
+              <li class="checklist-item" id="check-connection">
+                <span class="check-icon">○</span>
+                <span class="check-text">Test your GHL connection</span>
+                <button class="check-goto s-btn s-btn-ghost s-btn-sm" data-goto-step="2">Test →</button>
+              </li>
+              <li class="checklist-item" id="check-pipeline">
+                <span class="check-icon">○</span>
+                <span class="check-text">Set a default pipeline</span>
+                <button class="check-goto s-btn s-btn-ghost s-btn-sm" data-goto-step="3">Set up →</button>
+              </li>
+              <li class="checklist-item" id="check-first-push">
+                <span class="check-icon">○</span>
+                <span class="check-text">Push your first lead to GHL</span>
+                <span class="check-hint">Go to any Google Maps listing and click the green button</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="field-group">
+              <label class="field-label" for="agency-name">Agency Name</label>
+              <input type="text" id="agency-name" class="s-input" placeholder="e.g. Apex Digital Marketing">
+              <p class="field-hint">Shown in the sidebar header and footer.</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="crm-name">CRM Display Name</label>
+              <input type="text" id="crm-name" class="s-input" placeholder="e.g. GoHighLevel, My CRM, HubSpot">
+              <p class="field-hint">Replaces "GHL" in the sidebar — e.g. "Push to GHL" becomes "Push to My CRM". Leave blank to keep "GHL".</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="agency-logo">Agency Logo URL</label>
+              <input type="url" id="agency-logo" class="s-input" placeholder="https://youragency.com/logo.png">
+              <p class="field-hint">Displayed in the sidebar header. Use a square PNG or SVG, 128×128px+.</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="brand-color">Primary Brand Color</label>
+              <div class="color-picker-row">
+                <input type="color" id="brand-color-picker" class="color-swatch" value="#2563eb">
+                <input type="text" id="brand-color" class="s-input" placeholder="#2563eb" maxlength="7">
+              </div>
+              <!-- Change 3: Preset brand color swatches -->
+              <div class="color-presets">
+                <span class="preset-label">Presets:</span>
+                <button class="color-preset" data-color="#2563eb" style="background:#2563eb" title="Blue"></button>
+                <button class="color-preset" data-color="#7c3aed" style="background:#7c3aed" title="Purple"></button>
+                <button class="color-preset" data-color="#059669" style="background:#059669" title="Green"></button>
+                <button class="color-preset" data-color="#dc2626" style="background:#dc2626" title="Red"></button>
+                <button class="color-preset" data-color="#0f172a" style="background:#0f172a" title="Dark"></button>
+              </div>
+              <p class="field-hint">Used for button colors, highlights, and the sidebar header background.</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="agency-website">Agency Website</label>
+              <input type="url" id="agency-website" class="s-input" placeholder="https://youragency.com">
+              <p class="field-hint">Links the "Powered by [Agency]" footer in the sidebar to your website.</p>
+            </div>
+          </div>
+
+          <!-- Live preview -->
+          <div class="preview-label">Live Preview</div>
+          <div class="sidebar-preview" id="sidebar-preview">
+            <div class="preview-header" id="preview-header">
+              <div class="preview-header-left">
+                <div class="preview-logo" id="preview-logo" hidden></div>
+                <span class="preview-name" id="preview-name">LeadCapture Pro</span>
+              </div>
+              <div class="preview-close">✕</div>
+            </div>
+            <div class="preview-body">
+              <div class="preview-field-row">
+                <div class="preview-field-label">Business Name</div>
+                <div class="preview-field-bar" style="width:70%"></div>
+              </div>
+              <div class="preview-field-row">
+                <div class="preview-field-label">Phone</div>
+                <div class="preview-field-bar" style="width:55%"></div>
+              </div>
+              <div class="preview-field-row">
+                <div class="preview-field-label">Email</div>
+                <div class="preview-field-bar" style="width:80%"></div>
+              </div>
+              <div class="preview-btn-row" id="preview-btn">Push to GHL</div>
+            </div>
+            <div class="preview-footer">
+              Powered by <span id="preview-footer-name">LeadCapture Pro</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 2: GHL Connection ────────────────────────────────────────── -->
+        <div class="step-panel" data-step="2">
+          <div class="step-header">
+            <h2 class="step-title">GoHighLevel Connection</h2>
+            <p class="step-desc">Connect your GHL sub-account to start pushing leads.</p>
+          </div>
+
+          <!-- Step-by-step GHL setup guide -->
+          <div class="card ghl-setup-guide">
+            <h3 class="card-section-title" style="margin-bottom:4px;">📋 How to Get Your API Key</h3>
+            <p class="card-section-desc" style="margin-bottom:12px;">GHL uses <strong>Private Integrations</strong> (not the old API keys). Follow these steps — takes about 3 minutes.</p>
+            <div class="setup-steps">
+              <div class="setup-step">
+                <div class="setup-step-num">1</div>
+                <div class="setup-step-body">
+                  <div class="setup-step-title">Log in to your GHL sub-account</div>
+                  <div class="setup-step-desc">Go to <strong>app.gohighlevel.com</strong> and open the sub-account (location) you want to connect.</div>
+                </div>
+              </div>
+              <div class="setup-step">
+                <div class="setup-step-num">2</div>
+                <div class="setup-step-body">
+                  <div class="setup-step-title">Open Settings → Integrations</div>
+                  <div class="setup-step-desc">In the left sidebar, click <strong>Settings</strong> → <strong>Integrations</strong> → <strong>Private Integrations</strong>. (Not the agency-level settings — sub-account settings.)</div>
+                </div>
+              </div>
+              <div class="setup-step">
+                <div class="setup-step-num">3</div>
+                <div class="setup-step-body">
+                  <div class="setup-step-title">Create a new integration</div>
+                  <div class="setup-step-desc">Click <strong>+ Create New Integration</strong>. Name it anything (e.g. "LeadCapture Pro"). Enable all 5 scopes: contacts.readonly, contacts.write, opportunities.readonly, opportunities.write, locations.readonly.</div>
+                </div>
+              </div>
+              <div class="setup-step">
+                <div class="setup-step-num">4</div>
+                <div class="setup-step-body">
+                  <div class="setup-step-title">Copy the API key</div>
+                  <div class="setup-step-desc">After saving, GHL generates a long key starting with <code>eyJhb…</code> (150+ characters). Copy it immediately — <strong>GHL only shows it once.</strong> Paste it in the field below.</div>
+                </div>
+              </div>
+              <div class="setup-step">
+                <div class="setup-step-num">5</div>
+                <div class="setup-step-body">
+                  <div class="setup-step-title">Get your Location ID</div>
+                  <div class="setup-step-desc">Go to <strong>Settings → Business Profile</strong>. Scroll to the bottom — your Location ID is shown there (looks like <code>aBcD12345xYzW</code>). Copy and paste it below.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="field-group">
+              <label class="field-label" for="ghl-api-key">Private Integration API Key</label>
+              <div class="input-with-toggle">
+                <input type="password" id="ghl-api-key" class="s-input" placeholder="eyJhb…" autocomplete="off">
+                <button class="toggle-visibility" id="toggle-key" type="button" title="Show/hide key" aria-label="Toggle key visibility">
+                  <svg id="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </button>
+              </div>
+              <!-- Change 1: API key character counter -->
+              <p id="api-key-hint" class="field-hint">
+                <span id="api-key-count">0</span> characters
+                <span id="api-key-status"></span>
+                — GHL Private Integration keys are typically 150+ characters.
+              </p>
+              <p class="field-hint">
+                Go to <strong>GHL → Settings → Integrations → Private Integrations</strong> and create a new integration. Copy the API key.
+              </p>
+              <div class="scopes-box">
+                <p class="scopes-title">Enable these scopes when creating the integration:</p>
+                <ul class="scopes-list">
+                  <li><code>contacts.readonly</code> — search for existing contacts</li>
+                  <li><code>contacts.write</code> — create and update contacts</li>
+                  <li><code>opportunities.readonly</code> — read pipeline and stage data</li>
+                  <li><code>opportunities.write</code> — add contacts to pipelines</li>
+                  <li><code>locations.readonly</code> — verify your account connection</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label" for="ghl-location-id">Location ID</label>
+              <input type="text" id="ghl-location-id" class="s-input" placeholder="aBcD12345xYzW…" autocomplete="off">
+              <p class="field-hint">
+                Go to <strong>GHL → Settings → Business Profile</strong>. Your Location ID appears at the bottom of the page.
+              </p>
+            </div>
+
+            <div class="connection-test-row">
+              <button id="test-connection-btn" class="s-btn s-btn-secondary">
+                <span class="btn-label">Test Connection</span>
+                <span class="btn-spin hidden"></span>
+              </button>
+              <div id="connection-result" class="connection-result hidden"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Defaults ──────────────────────────────────────────────── -->
+        <div class="step-panel" data-step="3">
+          <div class="step-header">
+            <h2 class="step-title">Default CRM Settings</h2>
+            <p class="step-desc">Pre-fill pipeline, stage, and tags for every captured lead.</p>
+          </div>
+
+          <div class="card">
+            <div class="field-group">
+              <label class="field-label">Pipeline &amp; Stage</label>
+              <div class="pipeline-flow">
+                <div class="select-wrapper">
+                  <select id="default-pipeline" class="s-select">
+                    <option value="">None — user selects each time</option>
+                  </select>
+                </div>
+                <span class="pipeline-arrow">→</span>
+                <div class="select-wrapper">
+                  <select id="default-stage" class="s-select" disabled>
+                    <option value="">Select a pipeline first</option>
+                  </select>
+                </div>
+              </div>
+              <p class="field-hint">Requires a valid GHL connection in Step 2.</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">Default Tags</label>
+              <div class="s-pill-container" id="default-tags-pill-container">
+                <div id="default-tags-pills"></div>
+                <input type="text" id="default-tags-type-input" class="s-pill-type-input" placeholder="Add tag, press Enter…">
+                <input type="hidden" id="default-tags">
+              </div>
+              <p class="field-hint">Added to every contact. Source tags (e.g. "yelp-lead") are added automatically.</p>
+            </div>
+
+            <div class="field-group">
+              <label class="field-label">After Pushing a Contact</label>
+              <label class="toggle-row">
+                <input type="checkbox" id="auto-open-ghl">
+                <span class="toggle-label">Auto-open the contact page in GHL after a successful push</span>
+              </label>
+              <p class="field-hint">Opens the GHL contact page in a new tab immediately after pushing.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 4: Advanced ──────────────────────────────────────────────── -->
+        <div class="step-panel" data-step="4">
+          <div class="step-header">
+            <h2 class="step-title">Advanced</h2>
+            <p class="step-desc">Manage location profiles and export settings for client distribution.</p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-section-title">Location Profiles</h3>
+            <p class="card-section-desc">
+              Save multiple GHL sub-account configurations. Switch between them from the sidebar header. Useful for agencies managing multiple clients.
+            </p>
+            <div id="profiles-list" class="profiles-list"></div>
+            <button id="add-profile-btn" class="s-btn s-btn-ghost s-btn-sm">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+              Add Profile
+            </button>
+          </div>
+
+          <div class="card">
+            <h3 class="card-section-title">Export &amp; Import</h3>
+            <p class="card-section-desc">
+              Export your full configuration as a JSON file. Share it with clients or team members to instantly onboard them with your settings pre-configured.
+            </p>
+            <div class="export-import-row">
+              <button id="export-btn-2" class="s-btn s-btn-secondary">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                Download Settings JSON
+              </button>
+              <label class="s-btn s-btn-ghost">
+                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+                Import Settings JSON
+                <input type="file" id="import-input-2" accept=".json" hidden>
+              </label>
+            </div>
+            <!-- Change 4: Export security note -->
+            <p class="export-security-note">
+              <strong>Note:</strong> API keys are excluded from exports for security. Clients will need to enter their own GHL API key after importing.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3 class="card-section-title">FAQ &amp; Troubleshooting</h3>
+            <div class="faq-list">
+              <details class="faq-item">
+                <summary class="faq-q">My connection test fails — what do I check?</summary>
+                <p class="faq-a">Make sure you're using a <strong>Private Integration</strong> key (not an OAuth token). Go to GHL → Settings → Integrations → Private Integrations. The key should be 150+ characters. Also confirm all 5 scopes are enabled: contacts.readonly, contacts.write, opportunities.readonly, opportunities.write, locations.readonly.</p>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-q">The Push button is greyed out.</summary>
+                <p class="faq-a">A phone number or email must be present to push. If none was detected automatically, scroll down in the sidebar and use <strong>Manual Entry</strong> to add one.</p>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-q">The contact shows as a duplicate in GHL.</summary>
+                <p class="faq-a">LeadCapture checks for existing contacts before pushing. If a match is found, click <strong>Update</strong> to merge the new data into the existing record without creating a duplicate.</p>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-q">Contacts are pushed but not appearing in my pipeline.</summary>
+                <p class="faq-a">Set a Default Pipeline and Stage in Step 3. If you've already set it, check that your API key has the <code>opportunities.write</code> scope enabled.</p>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-q">The sidebar doesn't appear on some websites.</summary>
+                <p class="faq-a">Some sites use aggressive Content Security Policies that block injected scripts. Try refreshing the page. The extension also doesn't run on Chrome Web Store pages or internal Chrome URLs.</p>
+              </details>
+              <details class="faq-item">
+                <summary class="faq-q">Address and website aren't showing for Google Maps listings.</summary>
+                <p class="faq-a">Google Maps loads data in stages. LeadCapture automatically retries after 1.5 seconds. If data is still missing, close and reopen the sidebar — the latest data will load.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 5: Outreach Templates ──────────────────────────────────── -->
+        <div class="step-panel" data-step="5">
+          <div class="step-header">
+            <h2 class="step-title">Outreach Templates &amp; Tools</h2>
+            <p class="step-desc">Pre-built scripts for your Loom audit workflow. Copy, paste, and close deals.</p>
+          </div>
+
+          <!-- Affiliate tool links -->
+          <div class="card">
+            <h3 class="card-section-title">Recommended Tools</h3>
+            <p class="card-section-desc">The tools that power this workflow. Click to sign up or log in.</p>
+
+            <div class="tool-cards">
+
+              <div class="tool-card">
+                <div class="tool-card-left">
+                  <div class="tool-icon tool-icon-ghl">GHL</div>
+                  <div>
+                    <div class="tool-name">GoHighLevel</div>
+                    <div class="tool-desc">All-in-one CRM, pipeline, and automation platform</div>
+                  </div>
+                </div>
+                <div class="tool-card-right">
+                  <a id="affiliate-ghl-btn" href="#" target="_blank" rel="noopener" class="s-btn s-btn-primary s-btn-sm tool-go-btn">Open →</a>
+                </div>
+              </div>
+
+              <div class="tool-card">
+                <div class="tool-card-left">
+                  <div class="tool-icon tool-icon-loom">▶</div>
+                  <div>
+                    <div class="tool-name">Loom</div>
+                    <div class="tool-desc">Record audit videos in one click — no editing needed</div>
+                  </div>
+                </div>
+                <div class="tool-card-right">
+                  <a id="affiliate-loom-btn" href="#" target="_blank" rel="noopener" class="s-btn s-btn-primary s-btn-sm tool-go-btn">Open →</a>
+                </div>
+              </div>
+
+              <div class="tool-card">
+                <div class="tool-card-left">
+                  <div class="tool-icon tool-icon-descript">D</div>
+                  <div>
+                    <div class="tool-name">Descript</div>
+                    <div class="tool-desc">Edit recordings, add captions, and polish audit videos</div>
+                  </div>
+                </div>
+                <div class="tool-card-right">
+                  <a id="affiliate-descript-btn" href="#" target="_blank" rel="noopener" class="s-btn s-btn-primary s-btn-sm tool-go-btn">Open →</a>
+                </div>
+              </div>
+
+              <div class="tool-card">
+                <div class="tool-card-left">
+                  <div class="tool-icon tool-icon-instantly">⚡</div>
+                  <div>
+                    <div class="tool-name">Instantly.ai</div>
+                    <div class="tool-desc">Cold email at scale — send your audit video follow-ups</div>
+                  </div>
+                </div>
+                <div class="tool-card-right">
+                  <a id="affiliate-instantly-btn" href="#" target="_blank" rel="noopener" class="s-btn s-btn-primary s-btn-sm tool-go-btn">Open →</a>
+                </div>
+              </div>
+
+            </div><!-- /.tool-cards -->
+          </div><!-- /.card -->
+
+          <!-- Outreach Templates — unified tabbed card -->
+          <div class="card outreach-tpl-card">
+            <div class="otpl-header">
+              <div>
+                <h3 class="card-section-title" style="margin-bottom:2px;">Outreach Templates</h3>
+                <p class="card-section-desc" style="margin:0;">Paste directly into GHL automations. <span class="cv-badge">&#123;&#123;custom values&#125;&#125;</span> auto-fill from your GHL contact data.</p>
+              </div>
+            </div>
+
+            <!-- Channel tabs -->
+            <div class="otpl-tabs" role="tablist">
+              <button class="otpl-tab active" data-tpl="email" role="tab">
+                <span class="otpl-tab-icon">✉️</span> Cold Email
+              </button>
+              <button class="otpl-tab" data-tpl="sms" role="tab">
+                <span class="otpl-tab-icon">💬</span> SMS
+              </button>
+              <button class="otpl-tab" data-tpl="linkedin" role="tab">
+                <span class="otpl-tab-icon">💼</span> LinkedIn DM
+              </button>
+              <button class="otpl-tab" data-tpl="colddm" role="tab">
+                <span class="otpl-tab-icon">📱</span> Cold DM
+              </button>
+              <button class="otpl-tab" data-tpl="loom" role="tab">
+                <span class="otpl-tab-icon">🎥</span> Loom Script
+              </button>
+              <button class="otpl-tab" data-tpl="vsl" role="tab">
+                <span class="otpl-tab-icon">🎬</span> VSL
+              </button>
+              <button class="otpl-tab" data-tpl="followup" role="tab">
+                <span class="otpl-tab-icon">🔁</span> Follow-Up
+              </button>
+            </div>
+
+            <!-- Email -->
+            <div class="otpl-panel active" data-tpl="email">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-email">Day 1 — Email</span>
+                <span class="otpl-hint">Subject: <em>"Quick video about {{contact.company_name}}'s website"</em></span>
+              </div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-cold-email">Hi {{contact.first_name}},
+
+I was looking up [Business Type] in {{contact.city}} and came across {{contact.company_name}}.
+
+I put together a quick 2-minute video showing a few things I noticed about your online presence — nothing salesy, just an honest look.
+
+[Loom Video Link]
+
+A few things stood out:
+• [Insert 1–2 audit findings — e.g. "Only 8 reviews vs. competitors with 80+" or "Site doesn't load on mobile"]
+
+Happy to jump on a quick call if any of this resonates.
+
+— {{location.name}}
+{{location.phone}}
+{{contact.website}}</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-cold-email">Copy</button>
+              </div>
+            </div>
+
+            <!-- SMS -->
+            <div class="otpl-panel" data-tpl="sms">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-sms">Day 0 — SMS</span>
+                <span class="otpl-hint">Fire immediately after pushing the lead in GHL.</span>
+              </div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-sms">Hi {{contact.first_name}}, this is {{location.name}}. I just recorded a quick 2-min video audit of {{contact.company_name}}'s website — [Loom Link]. No pitch, just honest feedback. Worth a look!</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-sms">Copy</button>
+              </div>
+            </div>
+
+            <!-- LinkedIn DM -->
+            <div class="otpl-panel" data-tpl="linkedin">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-linkedin">LinkedIn DM</span>
+                <span class="otpl-hint">Send after connecting. Keep it short — one hook, one ask.</span>
+              </div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-linkedin">Hey {{contact.first_name}} — I came across {{contact.company_name}} while researching [Business Type] companies in {{contact.city}}.
+
+Quick observation: [1 specific thing you noticed — e.g. "You're sitting at 3.8 stars on Google — I think there's a real opportunity there."]
+
+I put together a short 2-minute video walking through what I found. Nothing salesy — just something I thought was worth sharing.
+
+Would it be okay if I sent it over?
+
+— {{location.name}}</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-linkedin">Copy</button>
+              </div>
+            </div>
+
+            <!-- Cold DM (Facebook / Instagram / Social) -->
+            <div class="otpl-panel" data-tpl="colddm">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-colddm">Cold DM — Social</span>
+                <span class="otpl-hint">Facebook, Instagram, or any social DM. Lead with curiosity — never a pitch. Proven for local business owners who are active on social.</span>
+              </div>
+              <div class="otpl-subsection-title">📘 Facebook DM</div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-fb-dm">Hey {{contact.first_name}} — saw {{contact.company_name}} come up while I was looking at [Business Type] businesses in {{contact.city}}.
+
+Quick question — how long have you been getting most of your customers from word of mouth vs. online?
+
+I noticed something on your Google listing I thought was worth mentioning. Happy to share — no pitch, just something I'd want to know if it were my business.
+
+— {{location.name}}</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-fb-dm">Copy</button>
+              </div>
+              <div class="otpl-subsection-title" style="margin-top:12px;">📸 Instagram DM</div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-ig-dm">Hey {{contact.first_name}} — love what you're doing with {{contact.company_name}} 🙌
+
+Quick thing — I recorded a 2-min video walking through your online presence. Not a pitch, just something I noticed that's probably costing you leads.
+
+Want me to drop the link?</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-ig-dm">Copy</button>
+              </div>
+              <div class="otpl-tip-box" style="margin-top:12px;">
+                <strong>Social DM Strategy (2026):</strong> Follow first → like 2–3 posts → DM 48h later. Open with a compliment or curious question, not a service offer. Goal of DM #1 is to earn the right to send the video. Goal of video is to earn the call.
+              </div>
+            </div>
+
+            <!-- VSL Mini-Framework -->
+            <div class="otpl-panel" data-tpl="vsl">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-vsl">VSL Framework</span>
+                <span class="otpl-hint">Mini Video Sales Letter structure. Use for your agency pitch page, a follow-up video, or a Loom sent after they've shown interest.</span>
+              </div>
+              <div class="vsl-framework">
+                <div class="vsl-block">
+                  <div class="vsl-step-num">1</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">HOOK (0:00 – 0:15)</div>
+                    <div class="vsl-step-desc">Call out the exact person watching. "If you're a [business type] in [city] and you're not getting enough calls from Google — this is for you." Make them feel seen immediately.</div>
+                  </div>
+                </div>
+                <div class="vsl-block">
+                  <div class="vsl-step-num">2</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">AGITATE THE PROBLEM (0:15 – 0:45)</div>
+                    <div class="vsl-step-desc">Name the #1 frustration: "Most [business type] owners I talk to are great at their craft but invisible online. Competitors with half your quality are getting 3× the calls because of a few simple things."</div>
+                  </div>
+                </div>
+                <div class="vsl-block">
+                  <div class="vsl-step-num">3</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">SHOW THE GAP (0:45 – 1:15)</div>
+                    <div class="vsl-step-desc">Specific findings from their audit. Screen-share their profile, website, or Google listing. Point out: review count vs. competitors, missing pixel, no lead form. Real numbers create real urgency.</div>
+                  </div>
+                </div>
+                <div class="vsl-block">
+                  <div class="vsl-step-num">4</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">HORMOZI OFFER FRAME (1:15 – 1:45)</div>
+                    <div class="vsl-step-desc">"Here's what we do: [Dream Outcome] in [Time Frame] or [Guarantee]. You get [deliverable 1], [deliverable 2], [deliverable 3] — done for you. Most clients see [specific result] within [timeframe]."</div>
+                  </div>
+                </div>
+                <div class="vsl-block">
+                  <div class="vsl-step-num">5</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">SOCIAL PROOF (1:45 – 2:00)</div>
+                    <div class="vsl-step-desc">One sentence: "We helped [similar business] go from [X] to [Y] in [Z weeks]." If you don't have a client yet: "I'm taking on 3 founding clients in [city] at a discounted rate to build local case studies."</div>
+                  </div>
+                </div>
+                <div class="vsl-block">
+                  <div class="vsl-step-num">6</div>
+                  <div class="vsl-step-content">
+                    <div class="vsl-step-title">LOW-FRICTION CTA (2:00 – 2:15)</div>
+                    <div class="vsl-step-desc">"If any of this resonated — just reply to this message. I'll send you the full breakdown with exactly what I'd do for [business name]. No call needed yet."</div>
+                  </div>
+                </div>
+              </div>
+              <div class="otpl-tip-box" style="margin-top:16px;">
+                <strong>VSL length:</strong> 2–3 min outperforms longer videos for cold outreach. Loom delivers these better than YouTube links — they see your face, your cursor, and their own website. That personalization is your unfair advantage.
+              </div>
+            </div>
+
+            <!-- Loom Script -->
+            <div class="otpl-panel" data-tpl="loom">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-loom">Loom Script</span>
+                <span class="otpl-hint">Read on camera. Under 3 minutes. Replace [brackets] with real audit findings.</span>
+              </div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-loom-script">Hey {{contact.first_name}}, my name's {{location.name}} from {{location.company_name}}.
+
+I was browsing [Business Type] in {{contact.city}} and came across {{contact.company_name}} — I loved what you're doing, and I wanted to record a quick honest look at your online presence. This isn't a pitch, just something I noticed.
+
+[SCREEN: Pull up their website — {{contact.website}}]
+
+First thing I check is mobile. [OBSERVATION: "Looks great" OR "The menu breaks on mobile — 70%+ of local searches happen on phones."]
+
+Next, a quick speed check. [OBSERVATION: "Page loads in X seconds. Anything over 3s costs ~40% of visitors."]
+
+Now Google reviews. [OBSERVATION: "You have X reviews. Top competitors in {{contact.city}} are averaging 80–100. More reviews = more trust = more calls."]
+
+[OBSERVATION: "No clear call-to-action above the fold — visitors don't know what to do next."]
+
+The good news — every one of these is fixable. I've helped businesses in {{contact.city}} see real results within 60 days.
+
+I'd love to jump on a 15-minute call and walk through exactly what I'd do for {{contact.company_name}}. No obligation.
+
+Reply or call me at {{location.phone}}. Talk soon.</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-loom-script">Copy</button>
+              </div>
+            </div>
+
+            <!-- Follow-Up -->
+            <div class="otpl-panel" data-tpl="followup">
+              <div class="otpl-meta">
+                <span class="otpl-badge otpl-badge-followup">Day 3 — Follow-Up</span>
+                <span class="otpl-hint">Bump the thread if they haven't replied.</span>
+              </div>
+              <div class="template-box">
+                <pre class="template-text otpl-text" id="tpl-followup">Hey {{contact.first_name}},
+
+Just bumping this up — sent a short video audit of {{contact.company_name}}'s site earlier this week.
+
+The quick version: [1 specific issue]. Easy fix, could make a real difference for how many leads you're getting online.
+
+15-minute call this week? Happy to walk through it live.
+
+— {{location.name}}
+{{location.phone}}</pre>
+                <button class="template-copy-btn otpl-copy-btn" data-target="tpl-followup">Copy</button>
+              </div>
+            </div>
+
+            <!-- Custom values legend -->
+            <div class="otpl-cv-legend">
+              <span class="otpl-cv-title">GHL Custom Values used in these templates:</span>
+              <div class="otpl-cv-chips">
+                <code class="otpl-cv">{{contact.first_name}}</code>
+                <code class="otpl-cv">{{contact.company_name}}</code>
+                <code class="otpl-cv">{{contact.city}}</code>
+                <code class="otpl-cv">{{contact.website}}</code>
+                <code class="otpl-cv">{{location.name}}</code>
+                <code class="otpl-cv">{{location.phone}}</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- GHL Workflow -->
+          <div class="card">
+            <h3 class="card-section-title">GHL Audit Workflow — Sequence Overview</h3>
+            <p class="card-section-desc">Set this up once in GHL. Enroll every lead when you push them. The sequence runs automatically while you keep prospecting.</p>
+
+            <div class="wf-timeline">
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-sms">SMS</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 0 — Immediately</div>
+                  <div class="wf-action-title">Audit video SMS</div>
+                  <div class="wf-action-desc">Short intro + Loom link. Sent the moment you push the lead. Arrives while they may still be at their business.</div>
+                  <div class="wf-stat">Avg. SMS open rate: <strong>98%</strong> — most read within 3 minutes</div>
+                </div>
+              </div>
+
+              <div class="wf-connector"></div>
+
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-email">Email</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 1</div>
+                  <div class="wf-action-title">Cold audit email #1</div>
+                  <div class="wf-action-desc">Full cold email with Loom link and 1–2 specific observations from your audit. Personalization drives replies.</div>
+                  <div class="wf-stat">Personalized cold emails: <strong>~6–10% reply rate</strong> vs. 1–2% for generic blasts</div>
+                </div>
+              </div>
+
+              <div class="wf-connector"></div>
+
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-email">Email</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 3</div>
+                  <div class="wf-action-title">Follow-up bump</div>
+                  <div class="wf-action-desc">Short 2-line email. Reference the video. Give one concrete observation. Most replies come from follow-ups, not the first email.</div>
+                  <div class="wf-stat"><strong>44%</strong> of all sales happen after the 5th follow-up</div>
+                </div>
+              </div>
+
+              <div class="wf-connector"></div>
+
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-sms">SMS</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 5</div>
+                  <div class="wf-action-title">Check-in SMS</div>
+                  <div class="wf-action-desc">"Did you get a chance to watch?" — keeps you top of mind without pressure. Often triggers a reply even if emails were ignored.</div>
+                  <div class="wf-stat">SMS reply rates are <strong>7–8× higher</strong> than email</div>
+                </div>
+              </div>
+
+              <div class="wf-connector"></div>
+
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-email">Email</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 8</div>
+                  <div class="wf-action-title">Value-add email</div>
+                  <div class="wf-action-desc">Give one free tip directly relevant to their audit. No ask. Just value. Positions you as an expert and re-opens the conversation.</div>
+                  <div class="wf-stat">Value emails generate <strong>2–3× more replies</strong> than pitch emails</div>
+                </div>
+              </div>
+
+              <div class="wf-connector"></div>
+
+              <div class="wf-item">
+                <div class="wf-marker wf-marker-sms">SMS</div>
+                <div class="wf-content">
+                  <div class="wf-day-label">Day 12</div>
+                  <div class="wf-action-title">Final breakup SMS</div>
+                  <div class="wf-action-desc">"Still interested? Last message from me." — low pressure, high response. Breakup messages often get the highest reply rate of the sequence.</div>
+                  <div class="wf-stat">Breakup messages average a <strong>15–20% reply rate</strong></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="wf-benchmarks">
+              <div class="wf-benchmark-title">Expected Results — This Sequence</div>
+              <div class="wf-benchmark-grid">
+                <div class="wf-benchmark-item">
+                  <div class="wf-benchmark-num">~8–15%</div>
+                  <div class="wf-benchmark-label">Reply rate per 100 leads</div>
+                </div>
+                <div class="wf-benchmark-item">
+                  <div class="wf-benchmark-num">~3–5%</div>
+                  <div class="wf-benchmark-label">Book a call rate</div>
+                </div>
+                <div class="wf-benchmark-item">
+                  <div class="wf-benchmark-num">~1–2%</div>
+                  <div class="wf-benchmark-label">Close rate (full sequence)</div>
+                </div>
+                <div class="wf-benchmark-item">
+                  <div class="wf-benchmark-num">$1–5K</div>
+                  <div class="wf-benchmark-label">Avg. first deal size</div>
+                </div>
+              </div>
+              <p class="wf-disclaimer">⚠ These are industry benchmark estimates based on published cold outreach studies and are not guarantees. Results depend heavily on your niche, offer, market, messaging quality, and follow-through. Individual results vary significantly. Never make income claims to prospects.</p>
+            </div>
+          </div>
+
+          <!-- Niche Lead List -->
+          <div class="card">
+            <h3 class="card-section-title">Suggested Lead List Niches</h3>
+            <p class="card-section-desc">High-converting niches for local marketing services. Use these search phrases on Google Maps or Google Search to build your lead list fast. Click a phrase to copy it.</p>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">🏠 Home Services — highest volume, easy website/review upsell</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="roofing contractors near [city]">Roofing contractors</button>
+                <button class="niche-chip" data-query="HVAC companies near [city]">HVAC companies</button>
+                <button class="niche-chip" data-query="plumbers near [city]">Plumbers</button>
+                <button class="niche-chip" data-query="electricians near [city]">Electricians</button>
+                <button class="niche-chip" data-query="landscaping companies near [city]">Landscaping</button>
+                <button class="niche-chip" data-query="house painters near [city]">Painters</button>
+                <button class="niche-chip" data-query="pest control near [city]">Pest Control</button>
+                <button class="niche-chip" data-query="pressure washing near [city]">Pressure Washing</button>
+                <button class="niche-chip" data-query="cleaning services near [city]">Cleaning Services</button>
+                <button class="niche-chip" data-query="garage door repair near [city]">Garage Door Repair</button>
+              </div>
+            </div>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">🏥 Health &amp; Medical — high ticket, reputation-driven</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="dentists near [city]">Dentists</button>
+                <button class="niche-chip" data-query="chiropractors near [city]">Chiropractors</button>
+                <button class="niche-chip" data-query="optometrists near [city]">Optometrists</button>
+                <button class="niche-chip" data-query="physical therapy near [city]">Physical Therapy</button>
+                <button class="niche-chip" data-query="med spa near [city]">Med Spas</button>
+                <button class="niche-chip" data-query="urgent care near [city]">Urgent Care</button>
+              </div>
+            </div>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">⚖️ Legal &amp; Financial — high LTV, needs trust signals</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="personal injury attorneys near [city]">PI Attorneys</button>
+                <button class="niche-chip" data-query="family law attorneys near [city]">Family Law</button>
+                <button class="niche-chip" data-query="insurance agencies near [city]">Insurance Agencies</button>
+                <button class="niche-chip" data-query="accountants near [city]">Accountants</button>
+                <button class="niche-chip" data-query="mortgage brokers near [city]">Mortgage Brokers</button>
+                <button class="niche-chip" data-query="financial advisors near [city]">Financial Advisors</button>
+              </div>
+            </div>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">💅 Beauty &amp; Wellness — repeat customers, bad review sensitivity</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="hair salons near [city]">Hair Salons</button>
+                <button class="niche-chip" data-query="nail salons near [city]">Nail Salons</button>
+                <button class="niche-chip" data-query="barbershops near [city]">Barbershops</button>
+                <button class="niche-chip" data-query="day spas near [city]">Day Spas</button>
+                <button class="niche-chip" data-query="gyms near [city]">Gyms</button>
+                <button class="niche-chip" data-query="personal trainers near [city]">Personal Trainers</button>
+              </div>
+            </div>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">🚗 Automotive — often no website or outdated site</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="auto repair shops near [city]">Auto Repair</button>
+                <button class="niche-chip" data-query="auto detailing near [city]">Auto Detailing</button>
+                <button class="niche-chip" data-query="towing companies near [city]">Towing</button>
+                <button class="niche-chip" data-query="used car dealers near [city]">Used Car Dealers</button>
+                <button class="niche-chip" data-query="auto glass repair near [city]">Auto Glass</button>
+              </div>
+            </div>
+
+            <div class="niche-category">
+              <div class="niche-cat-title">🍽️ Food &amp; Hospitality — reputation management upsell</div>
+              <div class="niche-grid">
+                <button class="niche-chip" data-query="restaurants near [city]">Restaurants</button>
+                <button class="niche-chip" data-query="pizza restaurants near [city]">Pizza Shops</button>
+                <button class="niche-chip" data-query="food trucks near [city]">Food Trucks</button>
+                <button class="niche-chip" data-query="catering companies near [city]">Caterers</button>
+              </div>
+            </div>
+
+            <p class="niche-tip">💡 <strong>Pro tip:</strong> Filter by under 4★ or no website after capturing — those are your easiest closes. Start with Home Services if you're new; high volume + obvious pain points = fast replies.</p>
+          </div>
+
+          <!-- Daily Prospecting System -->
+          <div class="card">
+            <div class="dps-header">
+              <div class="dps-badge">⏱ 15 MIN/DAY</div>
+              <h3 class="card-section-title" style="margin:0">The Daily Prospecting System</h3>
+              <p class="card-section-desc" style="margin:4px 0 0">Agency owners love repeatable systems. Follow this every morning to fill your pipeline consistently.</p>
+            </div>
+
+            <div class="dps-steps">
+              <div class="dps-step">
+                <div class="dps-step-num">1</div>
+                <div class="dps-step-body">
+                  <div class="dps-step-title">Search a niche on Google Maps</div>
+                  <div class="dps-step-desc">Pick one niche + city each day. "Roofers in Columbus OH", "HVAC companies in Tampa FL". Use the niche chips above to copy the query.</div>
+                </div>
+              </div>
+              <div class="dps-step">
+                <div class="dps-step-num">2</div>
+                <div class="dps-step-body">
+                  <div class="dps-step-title">Open LeadCapture Pro — detect 20 businesses</div>
+                  <div class="dps-step-desc">Filter by <strong>No Website</strong> or <strong>Under 4★</strong> to surface the weakest prospects first. These are your easiest closes.</div>
+                </div>
+              </div>
+              <div class="dps-step">
+                <div class="dps-step-num">3</div>
+                <div class="dps-step-body">
+                  <div class="dps-step-title">Batch push to GHL with a niche tag</div>
+                  <div class="dps-step-desc">Tag every push with the niche + city (e.g. <code class="dps-code">roof-columbus-oh</code>). Use batch push to send all 20 in one click.</div>
+                </div>
+              </div>
+              <div class="dps-step">
+                <div class="dps-step-num">4</div>
+                <div class="dps-step-body">
+                  <div class="dps-step-title">Outreach workflow fires automatically</div>
+                  <div class="dps-step-desc">Set up a GHL workflow on the <strong>cold-outreach</strong> tag: Day 0 SMS, Day 1 email, Day 3 follow-up, Day 7 final bump. You prospect — GHL does the follow-up.</div>
+                </div>
+              </div>
+              <div class="dps-step">
+                <div class="dps-step-num">5</div>
+                <div class="dps-step-body">
+                  <div class="dps-step-title">Book calls, close clients</div>
+                  <div class="dps-step-desc">Reply to responses in GHL. Warm prospects are waiting. Repeat daily and you'll have a full pipeline within a week.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dps-math">
+              <div class="dps-math-title">📊 The Math</div>
+              <div class="dps-math-grid">
+                <div class="dps-math-item"><span class="dps-math-num">20</span><span class="dps-math-label">contacts/day</span></div>
+                <div class="dps-math-arrow">→</div>
+                <div class="dps-math-item"><span class="dps-math-num">~10%</span><span class="dps-math-label">reply rate</span></div>
+                <div class="dps-math-arrow">→</div>
+                <div class="dps-math-item"><span class="dps-math-num">~3</span><span class="dps-math-label">calls/week</span></div>
+                <div class="dps-math-arrow">→</div>
+                <div class="dps-math-item dps-math-highlight"><span class="dps-math-num">$2–6K</span><span class="dps-math-label">MRR/month</span></div>
+              </div>
+              <p class="dps-disclaimer">Results vary. Based on typical agency cold outreach conversion rates.</p>
+            </div>
+          </div>
+
+          <!-- Find Weak Businesses -->
+          <div class="card">
+            <h3 class="card-section-title">🎯 Find Weak Businesses — Your Easiest Closes</h3>
+            <p class="card-section-desc">Businesses with marketing gaps are your hottest prospects. They already know they're missing something — you're just showing up with the solution.</p>
+
+            <div class="weak-biz-grid">
+              <div class="weak-biz-card">
+                <div class="weak-biz-icon">🌐</div>
+                <div class="weak-biz-label">No Website</div>
+                <div class="weak-biz-pitch">Your opening line: <em>"I noticed you don't have a website — I can have you live in 7 days."</em></div>
+                <div class="weak-biz-services">Website build · Local SEO · Google Business setup</div>
+              </div>
+              <div class="weak-biz-card">
+                <div class="weak-biz-icon">⭐</div>
+                <div class="weak-biz-label">Low Rating (&lt; 4★)</div>
+                <div class="weak-biz-pitch">Your opening line: <em>"You're at 3.6 stars — I can help you get to 4.5+ in 60 days."</em></div>
+                <div class="weak-biz-services">Reputation management · Review automation · Response templates</div>
+              </div>
+              <div class="weak-biz-card">
+                <div class="weak-biz-icon">📣</div>
+                <div class="weak-biz-label">Few Reviews (&lt; 10)</div>
+                <div class="weak-biz-pitch">Your opening line: <em>"Only 8 reviews is costing you customers — here's how we fix that."</em></div>
+                <div class="weak-biz-services">Review funnel · SMS follow-up automation · GBP optimization</div>
+              </div>
+              <div class="weak-biz-card">
+                <div class="weak-biz-icon">📈</div>
+                <div class="weak-biz-label">No Google Ads</div>
+                <div class="weak-biz-pitch">Your opening line: <em>"Your competitors are running ads and you're not showing up at the top."</em></div>
+                <div class="weak-biz-services">Google Ads management · LSA setup · Competitor analysis</div>
+              </div>
+            </div>
+
+            <div class="weak-biz-example">
+              <div class="weak-biz-ex-title">Example Prospect (detected automatically by LeadCapture Pro):</div>
+              <div class="weak-biz-ex-card">
+                <div class="weak-biz-ex-row"><strong>ABC Roofing</strong></div>
+                <div class="weak-biz-ex-row">📞 (614) 555-0182 &nbsp;·&nbsp; 🌐 No website</div>
+                <div class="weak-biz-ex-row">⭐ 3.6 rating &nbsp;·&nbsp; 9 reviews</div>
+                <div class="weak-biz-ex-tags">
+                  <span class="weak-biz-tag tag-red">No website</span>
+                  <span class="weak-biz-tag tag-yellow">Low rating</span>
+                  <span class="weak-biz-tag tag-orange">Few reviews</span>
+                </div>
+                <div class="weak-biz-ex-pitch">Perfect for: website build + reputation management + Google Ads → $2,500/mo retainer</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GHL Smart Lists -->
+          <div class="card">
+            <h3 class="card-section-title">📋 GHL Smart Lists — Organize Your Prospects</h3>
+            <p class="card-section-desc">GHL Smart Lists are tag-based filtered views. LeadCapture Pro auto-tags every contact — here's how to turn those tags into powerful prospect lists inside GHL.</p>
+
+            <div class="smartlist-steps">
+              <div class="smartlist-step">
+                <div class="smartlist-step-icon">1</div>
+                <div><strong>LeadCapture Pro auto-tags every push</strong> with the source platform (<code class="dps-code">google-maps-lead</code>, <code class="dps-code">yelp-lead</code>) plus any tags you add at push time.</div>
+              </div>
+              <div class="smartlist-step">
+                <div class="smartlist-step-icon">2</div>
+                <div><strong>Add a niche + city tag</strong> when pushing (e.g. <code class="dps-code">roof-columbus-oh</code>, <code class="dps-code">hvac-tampa-fl</code>). Use the batch tags field to apply one tag to all 20 contacts at once.</div>
+              </div>
+              <div class="smartlist-step">
+                <div class="smartlist-step-icon">3</div>
+                <div><strong>In GHL → Contacts</strong>, click "Smart Lists" → "Add Smart List" → filter by tag. Save it as "Roofers Columbus" or "HVAC Tampa." Your prospects are now in a live filtered list.</div>
+              </div>
+              <div class="smartlist-step">
+                <div class="smartlist-step-icon">4</div>
+                <div><strong>Trigger automations from Smart Lists.</strong> Bulk-select contacts in your list and enroll in a workflow — or set the workflow trigger to fire when a contact gets the tag.</div>
+              </div>
+            </div>
+
+            <div class="smartlist-tip">
+              💡 <strong>Recommended tags to use:</strong>
+              <div class="smartlist-tags">
+                <code class="dps-code">google-maps-lead</code>
+                <code class="dps-code">cold-outreach</code>
+                <code class="dps-code">no-website</code>
+                <code class="dps-code">low-rating</code>
+                <code class="dps-code">[niche]-[city]-[state]</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Niche pitch scripts -->
+          <div class="card">
+            <h3 class="card-section-title">💬 Niche-Specific Openers</h3>
+            <p class="card-section-desc">Swap in the business name and city. Pair with your Loom audit video for best results.</p>
+            <div class="niche-tabs">
+              <button class="niche-tab active" data-niche="restaurant">Restaurants</button>
+              <button class="niche-tab" data-niche="home-services">Home Services</button>
+              <button class="niche-tab" data-niche="healthcare">Healthcare</button>
+              <button class="niche-tab" data-niche="auto">Auto Repair</button>
+            </div>
+            <div class="niche-script active" data-niche="restaurant">
+              <div class="template-box">
+                <pre class="template-text" id="niche-restaurant">Hi {{contact.first_name}},
+
+I noticed {{contact.company_name}} has [X] stars on Google — I work with restaurants to fix their online reputation and get more 5-star reviews consistently.
+
+I put together a quick 2-minute video showing exactly what I found and what I'd do first. Mind if I send it over?
+
+{{location.name}}
+{{location.phone}}</pre>
+                <button class="template-copy-btn s-btn s-btn-ghost s-btn-sm" data-target="niche-restaurant">Copy</button>
+              </div>
+            </div>
+            <div class="niche-script" data-niche="home-services">
+              <div class="template-box">
+                <pre class="template-text" id="niche-home-services">Hi {{contact.first_name}},
+
+I was searching for [service type] in {{contact.city}} and noticed {{contact.company_name}} doesn't have a website yet. We build simple, effective sites for home service companies that show up on Google — most clients see 5–10 more inbound calls per month.
+
+I recorded a 2-minute video showing what that would look like for your business. Want me to send it?
+
+{{location.name}}
+{{location.phone}}</pre>
+                <button class="template-copy-btn s-btn s-btn-ghost s-btn-sm" data-target="niche-home-services">Copy</button>
+              </div>
+            </div>
+            <div class="niche-script" data-niche="healthcare">
+              <div class="template-box">
+                <pre class="template-text" id="niche-healthcare">Hi {{contact.first_name}},
+
+I put together a short video showing a few things I noticed about {{contact.company_name}}'s online presence — specifically around how new patients are finding you online.
+
+Nothing salesy, just an honest look. Takes 2 minutes to watch. Would it be okay to send it over?
+
+{{location.name}}
+{{location.phone}}</pre>
+                <button class="template-copy-btn s-btn s-btn-ghost s-btn-sm" data-target="niche-healthcare">Copy</button>
+              </div>
+            </div>
+            <div class="niche-script" data-niche="auto">
+              <div class="template-box">
+                <pre class="template-text" id="niche-auto">Hi {{contact.first_name}},
+
+I ran a quick digital audit on {{contact.company_name}} and found a few things that might be costing you customers online. Took me about 10 minutes to put together a 2-minute video walking through what I found.
+
+Can I send it over? No pitch — just what I found.
+
+{{location.name}}
+{{location.phone}}</pre>
+                <button class="template-copy-btn s-btn s-btn-ghost s-btn-sm" data-target="niche-auto">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Objection handlers — Jeremy Miner NEPQ -->
+          <div class="card">
+            <h3 class="card-section-title">🛡️ Objection Handlers — NEPQ Framework</h3>
+            <p class="card-section-desc">From Jeremy Miner's NEPQ (Neuro-Emotional Persuasion Questions). Never defend, never push back — ask a question that creates self-awareness. The prospect convinces themselves.</p>
+            <div class="nepq-intro">
+              <div class="nepq-rule">
+                <span class="nepq-rule-icon">🧠</span>
+                <span>The rule: <strong>never pitch, never defend</strong>. Respond to every objection with a softened, curious question. Silence after the question is your friend.</span>
+              </div>
+            </div>
+            <div class="objection-list">
+              <div class="objection-item">
+                <div class="objection-label">"I already work with someone."</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Problem Awareness</div>
+                  "That's great — how long have you been working with them? And how do you feel like things are going with your online presence right now — like your Google reviews and the number of calls you're getting from search?"
+                  <div class="nepq-note">Goal: get them to voice their own dissatisfaction. If they're happy, they're not your prospect. If they hedge, keep asking.</div>
+                </div>
+              </div>
+              <div class="objection-item">
+                <div class="objection-label">"Not interested."</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Consequence Question</div>
+                  "Completely understand. Can I ask — is it more that business is already great and you don't need more customers right now, or is it that you've tried things like this before and it didn't pan out?"
+                  <div class="nepq-note">This reframes "not interested" as a solvable problem. Most say the second one — then you have a conversation.</div>
+                </div>
+              </div>
+              <div class="objection-item">
+                <div class="objection-label">"Just send me some information."</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Clarifying Question</div>
+                  "Of course — I want to send you something actually useful. Quick question before I do: is most of your new business coming from Google and online, or more from referrals and word of mouth right now?"
+                  <div class="nepq-note">Gets them talking before they ghost your email. Referral-heavy = they need online presence. Google-heavy = they care about rankings.</div>
+                </div>
+              </div>
+              <div class="objection-item">
+                <div class="objection-label">"How much does it cost?"</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Future Pace</div>
+                  "That's a fair question and I want to give you a real answer — but it depends on what's actually going on with your online presence. What would it mean for your business if you were getting 5–10 extra calls a month from Google?"
+                  <div class="nepq-note">Never answer price before value. Their answer reveals ROI tolerance — then you price to that number.</div>
+                </div>
+              </div>
+              <div class="objection-item">
+                <div class="objection-label">"I don't have time right now."</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Low Friction</div>
+                  "Totally get it — no call needed at all. I recorded a 2-minute video for you — just shows what I found on your listing. You can watch it whenever. Want me to send the link?"
+                  <div class="nepq-note">Turn every stall into a video request. Video-first is 2026 — never ask for time before they've seen value.</div>
+                </div>
+              </div>
+              <div class="objection-item">
+                <div class="objection-label">"We tried marketing before and it didn't work."</div>
+                <div class="objection-response">
+                  <div class="nepq-tag">NEPQ — Past Experience</div>
+                  "That's really common — and honestly, most marketing agencies sell the same thing. What was it specifically that didn't deliver? Was it the leads weren't qualified, or more that you didn't see enough volume to judge it?"
+                  <div class="nepq-note">Identify the real failure point. This separates you from whoever burned them before and positions your approach as different.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Warm Outreach & Relationship Pipeline -->
+          <div class="card">
+            <h3 class="card-section-title">🔥 Warm Outreach — Relationship Pipeline</h3>
+            <p class="card-section-desc">Cold outreach gets you the first conversation. Warm outreach is how you build the pipeline that pays you 12 months from now. Based on Alex Hormozi's relationship-first offer framework.</p>
+
+            <div class="warm-section">
+              <div class="warm-section-title">📊 Gary Vee's Jab Framework + Hormozi's Grand Slam Offer</div>
+              <p class="warm-section-desc"><strong>Gary Vaynerchuk</strong> coined "Jab Jab Jab Right Hook" — give value three times before you ask. <strong>Alex Hormozi</strong> refined the ask itself: make your offer so good it's almost stupid to say no (the Grand Slam Offer). Use both together.</p>
+              <div class="warm-offer-grid">
+                <div class="warm-offer-item">
+                  <div class="warm-offer-num">1</div>
+                  <div class="warm-offer-content">
+                    <div class="warm-offer-title">Jab 1 — Free Audit Video (Loom)</div>
+                    <div class="warm-offer-desc">Unsolicited. No ask. Just send it. "I recorded this for you — no strings attached." This is the highest-converting cold touch you can send. Costs 3 minutes. (Gary Vee: the first jab)</div>
+                  </div>
+                </div>
+                <div class="warm-offer-item">
+                  <div class="warm-offer-num">2</div>
+                  <div class="warm-offer-content">
+                    <div class="warm-offer-title">Jab 2 — Free Quick Win (Deliver First)</div>
+                    <div class="warm-offer-desc">If they reply, do one small thing for free — write them a better Google Business description, fix a review response, suggest 1 keyword fix. Proof before pitch. (Gary Vee: the second jab)</div>
+                  </div>
+                </div>
+                <div class="warm-offer-item">
+                  <div class="warm-offer-num">3</div>
+                  <div class="warm-offer-content">
+                    <div class="warm-offer-title">Jab 3 — Value-Add Check-in</div>
+                    <div class="warm-offer-desc">A tip, a resource, or a "noticed this about your competitor" touch. No ask yet. At this point they know you deliver, not just pitch. (Gary Vee: the third jab)</div>
+                  </div>
+                </div>
+                <div class="warm-offer-item">
+                  <div class="warm-offer-num">4</div>
+                  <div class="warm-offer-content">
+                    <div class="warm-offer-title">Right Hook — The Grand Slam Offer (Hormozi)</div>
+                    <div class="warm-offer-desc">Now you ask. But with a Hormozi Grand Slam Offer: <em>"[Dream Outcome] in [Timeframe], or [Guarantee]. Done for you. Only [N] spots this month."</em> Stack value so high the price feels obvious. Dream outcome + high likelihood + fast timeline + zero effort for them = irresistible.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="warm-section" style="margin-top:20px;">
+              <div class="warm-section-title">🗓️ 90–120 Day Reconnect Cadence</div>
+              <p class="warm-section-desc">Most sales happen after 5+ touches. Set up GHL automations to run this sequence automatically — you keep prospecting while the machine nurtures.</p>
+              <div class="cadence-timeline">
+                <div class="cadence-item">
+                  <div class="cadence-day">Day 0</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">Initial push + SMS + Loom</div>
+                    <div class="cadence-desc">Push to GHL → auto-SMS fires → send Loom manually within 24h</div>
+                  </div>
+                </div>
+                <div class="cadence-connector"></div>
+                <div class="cadence-item">
+                  <div class="cadence-day">Day 3</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">Email follow-up bump</div>
+                    <div class="cadence-desc">"Just bumping this up — did you get a chance to check out the video?"</div>
+                  </div>
+                </div>
+                <div class="cadence-connector"></div>
+                <div class="cadence-item">
+                  <div class="cadence-day">Day 7</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">Value-add touch</div>
+                    <div class="cadence-desc">Send a tip relevant to their industry — "Noticed Google Maps is showing your hours wrong — here's how to fix it in 2 min." No ask.</div>
+                  </div>
+                </div>
+                <div class="cadence-connector"></div>
+                <div class="cadence-item">
+                  <div class="cadence-day">Day 14</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">Breakup email</div>
+                    <div class="cadence-desc">"Last note from me — if the timing is off, totally understand. If things change, I'm here." This gets more replies than any other step.</div>
+                  </div>
+                </div>
+                <div class="cadence-connector"></div>
+                <div class="cadence-item cadence-item-reactivate">
+                  <div class="cadence-day">Day 90</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">🔄 Reactivation — New Hook</div>
+                    <div class="cadence-desc">"Hey — it's been a few months. I noticed [new data point — a competitor got 40 new reviews, a season changed, a new service they might care about]. Thought of you. Still working on [problem they mentioned]?"</div>
+                  </div>
+                </div>
+                <div class="cadence-connector"></div>
+                <div class="cadence-item cadence-item-reactivate">
+                  <div class="cadence-day">Day 120</div>
+                  <div class="cadence-content">
+                    <div class="cadence-title">🔄 Seasonal or milestone touch</div>
+                    <div class="cadence-desc">Tie to a real event: New Year, slow season, competitor news, local event. "As you head into [season], wanted to check in — is online lead flow still a challenge?"</div>
+                  </div>
+                </div>
+              </div>
+              <div class="otpl-tip-box" style="margin-top:12px;">
+                <strong>GHL Automation tip:</strong> Tag every cold lead as <code>cold-nurture</code> when they don't reply to Day 14. Build a Smart List on that tag. Drop your Day 90 touch into a new GHL workflow that fires 76 days after the last contact date. It runs while you sleep.
+              </div>
+            </div>
+
+            <div class="warm-section" style="margin-top:20px;">
+              <div class="warm-section-title">📱 Social Media Engagement Strategy</div>
+              <p class="warm-section-desc">Warm them up before you DM. Takes 5 minutes per prospect. Dramatically increases reply rates on cold DMs.</p>
+              <div class="social-engage-steps">
+                <div class="social-step">
+                  <div class="social-step-icon">👤</div>
+                  <div class="social-step-content">
+                    <div class="social-step-title">Step 1 — Follow + Connect (Day 1)</div>
+                    <div class="social-step-desc">Follow their business on Instagram. Send a LinkedIn connect request — no note. Friend request on Facebook if it's a personal profile. Don't say anything yet.</div>
+                  </div>
+                </div>
+                <div class="social-step">
+                  <div class="social-step-icon">❤️</div>
+                  <div class="social-step-content">
+                    <div class="social-step-title">Step 2 — Engage Authentically (Day 2–3)</div>
+                    <div class="social-step-desc">Like 2–3 recent posts. Leave one genuine comment — not "Great post!" but something specific: "That before/after on the [job type] is impressive — how long did that take?" Shows you actually looked.</div>
+                  </div>
+                </div>
+                <div class="social-step">
+                  <div class="social-step-icon">💬</div>
+                  <div class="social-step-content">
+                    <div class="social-step-title">Step 3 — DM After Warm-Up (Day 3–4)</div>
+                    <div class="social-step-desc">Now you're not a stranger. Open with a callback to your comment: "Hey — I left a comment on your [post]. I also noticed something about your Google listing I thought was worth mentioning..." See Cold DM templates above.</div>
+                  </div>
+                </div>
+                <div class="social-step">
+                  <div class="social-step-icon">🎥</div>
+                  <div class="social-step-content">
+                    <div class="social-step-title">Step 4 — Video First, Call Never (until they ask)</div>
+                    <div class="social-step-desc">Send the Loom link in DM #2 only if they reply to DM #1. Never ask for a call in a cold DM — you haven't earned it. "Want me to send the video?" is the only ask. Let the video do the pitching.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="social-platform-tips">
+                <div class="spt-item">
+                  <div class="spt-platform">📘 Facebook</div>
+                  <div class="spt-tip">Best for local service businesses 35+. Friend request owners personally, not just the business page. Messenger feels casual — use first name, short messages.</div>
+                </div>
+                <div class="spt-item">
+                  <div class="spt-platform">📸 Instagram</div>
+                  <div class="spt-tip">Best for businesses with visual work (contractors, restaurants, salons). Follow the business account. Comment on their work. DM is short and punchy — max 3 lines.</div>
+                </div>
+                <div class="spt-item">
+                  <div class="spt-platform">💼 LinkedIn</div>
+                  <div class="spt-tip">Best for B2B and professional services. Connect with the owner directly. Engage on their posts before DM-ing. LinkedIn DMs get read — but only if they feel human.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- First 5 Clients Challenge -->
+          <div class="card">
+            <h3 class="card-section-title">🏆 The First 5 Clients Challenge</h3>
+            <p class="card-section-desc">Your 30-day roadmap to $5,000 MRR. Follow this sequence every weekday.</p>
+            <div class="challenge-math">
+              <div class="challenge-math-item">
+                <div class="challenge-math-num">200</div>
+                <div class="challenge-math-label">Prospects scored<br><span>50/week × 4 weeks</span></div>
+              </div>
+              <div class="challenge-math-arrow">→</div>
+              <div class="challenge-math-item">
+                <div class="challenge-math-num">40</div>
+                <div class="challenge-math-label">Hot/Warm Leads<br><span>sent audit videos</span></div>
+              </div>
+              <div class="challenge-math-arrow">→</div>
+              <div class="challenge-math-item">
+                <div class="challenge-math-num">8–10</div>
+                <div class="challenge-math-label">Discovery calls<br><span>booked</span></div>
+              </div>
+              <div class="challenge-math-arrow">→</div>
+              <div class="challenge-math-item challenge-math-win">
+                <div class="challenge-math-num">5</div>
+                <div class="challenge-math-label">Clients closed<br><span>$5,000 MRR</span></div>
+              </div>
+            </div>
+            <div class="challenge-milestones">
+              <div class="milestone-item">
+                <span class="milestone-icon">🎯</span>
+                <div>
+                  <div class="milestone-title">Milestone 1 — First Push</div>
+                  <div class="milestone-desc">Push your first lead to GHL. You're officially prospecting.</div>
+                </div>
+              </div>
+              <div class="milestone-item">
+                <span class="milestone-icon">📊</span>
+                <div>
+                  <div class="milestone-title">Milestone 2 — 100 Prospects Scored</div>
+                  <div class="milestone-desc">You have enough data to know who your easiest closes are.</div>
+                </div>
+              </div>
+              <div class="milestone-item">
+                <span class="milestone-icon">🎥</span>
+                <div>
+                  <div class="milestone-title">Milestone 3 — First Audit Video Sent</div>
+                  <div class="milestone-desc">Record a 2-min Loom on a Hot Lead's website. This is your highest-converting move.</div>
+                </div>
+              </div>
+              <div class="milestone-item">
+                <span class="milestone-icon">📞</span>
+                <div>
+                  <div class="milestone-title">Milestone 4 — First Discovery Call Booked</div>
+                  <div class="milestone-desc">A prospect replied and wants to talk. You have a real sales opportunity.</div>
+                </div>
+              </div>
+              <div class="milestone-item">
+                <span class="milestone-icon">🏆</span>
+                <div>
+                  <div class="milestone-title">Milestone 5 — First Client Signed</div>
+                  <div class="milestone-desc">Close at $500–$1,500/month. You're now an agency owner.</div>
+                </div>
+              </div>
+            </div>
+            <div class="challenge-tip">
+              <strong>Pro tip:</strong> Always send the Loom video BEFORE quoting a price. Prospects who watch a personalized video are 3× more likely to book a call.
+            </div>
+          </div>
+
+        </div><!-- /step-panel 5 -->
+
+      </div><!-- /.steps-container -->
+
+      <!-- ── Footer actions ───────────────────────────────────────────────── -->
+      <div class="page-footer">
+        <button id="prev-btn" class="s-btn s-btn-ghost" disabled>← Previous</button>
+        <div class="footer-center">
+          <div id="save-toast" class="save-toast hidden">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Settings saved!
+          </div>
+        </div>
+        <div class="footer-right">
+          <button id="save-btn" class="s-btn s-btn-secondary">Save Settings</button>
+          <button id="next-btn" class="s-btn s-btn-primary">Next →</button>
+        </div>
+      </div>
+
+      <div class="page-legal">
+        <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>
+        <span class="legal-sep">·</span>
+        <a href="changelog.html" target="_blank" rel="noopener">What's New</a>
+      </div>
+
+    </div><!-- /.page-body -->
+  </div><!-- /.page -->
+
+  <!-- Add Profile Modal -->
+  <div id="profile-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Add Location Profile</h3>
+        <button id="modal-close" class="icon-btn-dark">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="field-group">
+          <label class="field-label" for="profile-name">Profile Name</label>
+          <input type="text" id="profile-name" class="s-input" placeholder="e.g. Client A, Main Account">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="profile-api-key">API Key</label>
+          <input type="password" id="profile-api-key" class="s-input" placeholder="eyJhb…">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="profile-location-id">Location ID</label>
+          <input type="text" id="profile-location-id" class="s-input" placeholder="aBcD12345xYzW…">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="modal-cancel" class="s-btn s-btn-ghost">Cancel</button>
+        <button id="modal-save" class="s-btn s-btn-primary">Add Profile</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>
